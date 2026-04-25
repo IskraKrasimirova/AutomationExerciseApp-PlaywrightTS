@@ -25,11 +25,13 @@ The goal of the project is to demonstrate modern automation practices, including
 ## 📁 Project Structure
 
 ```
-├── .github/workflows/playwright.yml   # CI pipeline
-├── tests/                             # Test files
-├── pages/                             # Page Object Model classes
-├── utils/                             # Helpers / utilities
-├── playwright.config.ts               # Playwright configuration
+├── .github/workflows/playwright.yml     # CI pipeline
+├── tests/
+│   ├── ui/                              # UI tests (Playwright UI)
+│   └── api/                             # API tests (Playwright APIRequestContext)
+├── pages/                               # Page Object Model classes
+├── utils/                               # Helpers / utilities
+├── playwright.config.ts                 # Playwright configuration
 ├── package.json
 └── README.md
 ```
