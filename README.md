@@ -1,4 +1,4 @@
-# AutomationExerciseApp – Playwright + TypeScript Automation Framework
+# AutomationExerciseApp – Test Automation Framework with Playwright + TypeScript
 
 This project contains automated UI tests for the demo web application  
 https://automationexercise.com/, implemented using **Playwright** and **TypeScript**.
