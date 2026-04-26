@@ -1,16 +1,16 @@
-import { expect, Page } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 
 export class NavBar {
-    homeLink;
-    productsLink;
-    cartLink;
-    loginLink;
-    testCasesLink;
-    apiTestingLink;
-    contactUsLink;
-    logoutLink;
-    deleteAccountLink;
-    loggedInAs;
+    private homeLink: Locator;
+    private productsLink: Locator;
+    private cartLink: Locator;
+    private loginLink: Locator;
+    private testCasesLink: Locator;
+    private apiTestingLink: Locator;
+    private contactUsLink: Locator;
+    private logoutLink: Locator;
+    private deleteAccountLink: Locator;
+    private loggedInAs: Locator;
 
     constructor(private page: Page) {
         this.homeLink = this.page.getByRole('link', { name: 'Home' });
