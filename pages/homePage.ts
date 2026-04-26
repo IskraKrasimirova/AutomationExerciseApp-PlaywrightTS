@@ -12,7 +12,7 @@ export class HomePage extends BasePage {
         super(page);
 
         this.logo = page.getByRole('link', { name: 'Home' });
-        this.header = page.getByRole('heading', { name: /Full-Fledged practice website/i });
+        this.header = page.locator('.item.active h1');
         this.consentButton = page.getByRole('button', { name: 'Consent' });
     }
 
@@ -26,5 +26,6 @@ export class HomePage extends BasePage {
     await expect(this.page).toHaveURL(config.baseUrl);
     await expect(this.logo).toBeVisible();
     await expect(this.header).toBeVisible();
+    await expect(this.header).toHaveText('AutomationExercise');
   }
 }
