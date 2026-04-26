@@ -1,6 +1,8 @@
 import { expect, Locator, Page } from '@playwright/test';
 import { BasePage } from './basePage';
 import { UserModel } from '../models/userModel';
+import { config } from "../utils/config";
+import { UiUrls } from '../utils/uiUrls';
 
 export class SignupPage extends BasePage {
     private accountInfoForm: Locator;
@@ -97,6 +99,7 @@ export class SignupPage extends BasePage {
     }
 
     async verifyIsAtSignupPage(name: string, email: string) {
+        await expect(this.page).toHaveURL(config.baseUrl + UiUrls.signup);
         await expect(this.accountInfoHeader).toBeVisible();
         await expect(this.addressInfoHeader).toBeVisible();
         await expect(this.nameInput).toHaveValue(name);

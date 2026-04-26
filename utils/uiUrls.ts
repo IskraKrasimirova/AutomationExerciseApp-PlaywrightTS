@@ -1,0 +1,15 @@
+export const UiUrls = {
+  accountCreated: 'account_created',
+  accountDeleted: 'delete_account',
+  brandProducts: 'brand_products/',
+  cart: 'view_cart',
+  categoryProducts: 'category_products/',
+  checkout: 'checkout',
+  contactUs: 'contact_us',
+  orderConfirmation: 'payment_done/',
+  login: 'login',
+  payment: 'payment',
+  products: 'products',
+  productDetails: 'product_details/',
+  signup: 'signup',
+} as const;

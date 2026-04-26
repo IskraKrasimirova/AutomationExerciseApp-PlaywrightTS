@@ -1,5 +1,7 @@
 import { expect, Locator, Page } from '@playwright/test';
 import { BasePage } from "./basePage";
+import {config} from "../utils/config";
+import { UiUrls } from '../utils/uiUrls';
 
 export class LoginPage extends BasePage {
     private loginForm: Locator;
@@ -52,7 +54,7 @@ export class LoginPage extends BasePage {
     }
 
     async verifyIsAtLoginPage() {
-        await expect(this.page).toHaveURL('/login');
+        await expect(this.page).toHaveURL(config.baseUrl + UiUrls.login);
         await expect(this.loginHeader).toBeVisible();
         await expect(this.signupHeader).toBeVisible();
     }

@@ -28,6 +28,10 @@ export class NavBar {
     async goToLoginPage() {
         await this.loginLink.click();
     }
+    
+    async deleteAccount() {
+        await this.deleteAccountLink.click();
+    }  
 
     async verifyUserIsLoggedIn(name: string) {
         await expect(this.logoutLink).toBeVisible();
