@@ -27,9 +27,9 @@ export default defineConfig({
   use: {
     baseURL: 'https://automationexercise.com/',
     headless: !!process.env.CI,
-    viewport: { width: 1920, height: 1080 },
+    viewport: null,
     launchOptions: {
-      args: ['--start-maximized']
+      args: process.env.CI ? [] : ['--start-maximized']
     },
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -39,7 +39,10 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+       // ...devices['Desktop Chrome'],
+        viewport: null,
+      },
     },
 
     {
