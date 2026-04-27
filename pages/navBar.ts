@@ -28,10 +28,14 @@ export class NavBar {
     async goToLoginPage() {
         await this.loginLink.click();
     }
-    
+
     async deleteAccount() {
         await this.deleteAccountLink.click();
-    }  
+    }
+
+    async isUserLoggedIn(): Promise<boolean> {
+        return this.logoutLink.isVisible();
+    }
 
     async logout() {
         await this.logoutLink.click();
