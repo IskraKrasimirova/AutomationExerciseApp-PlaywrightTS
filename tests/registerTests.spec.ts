@@ -1,57 +1,57 @@
 import { test } from '../tests/setup';
 import { HomePage } from '../pages/homePage';
 import { LoginPage } from '../pages/loginPage';
-import { SignupPage } from '../pages/signupPage';
-import { AccountCreatedPage } from '../pages/accountCreatedPage';
-import { AccountDeletedPage } from '../pages/accountDeletedPage';
 import { UserFactory } from '../factories/userFactory';
 import { config } from '../utils/config';
-import { UserModel } from '../models/userModel';
-import { Page } from '@playwright/test';
+import { registerUser } from '../flows/registerFlow';
+import { deleteUserAccount } from '../flows/deleteAccountFlow';
 
-async function registerUser(page: Page, user: UserModel) {
-    const homePage = new HomePage(page);
-    const loginPage = new LoginPage(page);
-    const signupPage = new SignupPage(page);
-    const accountCreatedPage = new AccountCreatedPage(page);
 
-    await homePage.acceptCookiesIfPresent();
-    await homePage.navBar.goToLoginPage();
-
-    await loginPage.verifyIsAtLoginPage();
-    await loginPage.signup(user.name, user.email);
-
-    await signupPage.verifyIsAtSignupPage(user.name, user.email);
-    await signupPage.createAccount(user);
-
-    await accountCreatedPage.verifyAccountCreated();
-    await accountCreatedPage.clickContinue();
-
-    await homePage.verifyIsAtHomePage();
-    await homePage.navBar.verifyUserIsLoggedIn(user.name);
-}
-
-async function deleteUserAccount(page: Page) {
-    const homePage = new HomePage(page);
-    const accountDeletedPage = new AccountDeletedPage(page);
-
-    await homePage.navBar.deleteAccount();
-    await accountDeletedPage.verifyAccountDeleted();
-    await accountDeletedPage.clickContinue();
-    await homePage.verifyIsAtHomePage();
-}
-
-test.describe('Register tests', () => {
+test.describe('Register tests @register', () => {
 
     test.beforeEach(async ({ page }) => {
         await page.goto(config.baseUrl);
     });
 
-    test('User can register successfully', async ({ page }) => {
+    test('User can register successfully @smoke', async ({ page }) => {
         const newUser = UserFactory.createDefault();
         await registerUser(page, newUser);
         await deleteUserAccount(page);
     });
+
+    test('Newly registered user can login successfully @e2e', async ({ page }) => {
+        const user = UserFactory.createDefault();
+        await registerUser(page, user);
+
+        const homePage = new HomePage(page);
+        await homePage.navBar.logout();
+
+        const loginPage = new LoginPage(page);
+        await loginPage.verifyIsAtLoginPage();
+        await loginPage.login(user.email, user.password);
+
+        await homePage.verifyIsAtHomePage();
+        await homePage.navBar.verifyUserIsLoggedIn(user.name);
+
+        await deleteUserAccount(page);
+    });
+
+    test('User cannot register with existing email @e2e @regression', async ({ page }) => {
+        const existingUser = UserFactory.createDefault();
+        await registerUser(page, existingUser);
+
+        const homePage = new HomePage(page);
+        await homePage.navBar.logout();
+
+        const loginPage = new LoginPage(page);
+        await loginPage.verifyIsAtLoginPage();
+        await loginPage.signup(existingUser.name, existingUser.email);
+        await loginPage.verifyEmailAlreadyExistsError();
+        await loginPage.login(existingUser.email, existingUser.password);
+
+        await homePage.verifyIsAtHomePage();
+        await homePage.navBar.verifyUserIsLoggedIn(existingUser.name);
+
+        await deleteUserAccount(page);
+    });
 });
-
-

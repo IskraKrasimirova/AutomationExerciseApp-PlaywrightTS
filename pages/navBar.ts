@@ -33,6 +33,10 @@ export class NavBar {
         await this.deleteAccountLink.click();
     }  
 
+    async logout() {
+        await this.logoutLink.click();
+    }
+
     async verifyUserIsLoggedIn(name: string) {
         await expect(this.logoutLink).toBeVisible();
         await expect(this.deleteAccountLink).toBeVisible();
