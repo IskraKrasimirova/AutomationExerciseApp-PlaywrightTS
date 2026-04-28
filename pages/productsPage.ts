@@ -19,7 +19,7 @@ export class ProductsPage extends BasePage {
         this.allProductsHeader = page.getByRole('heading', { name: 'All Products' });
         this.productsList = page.locator('.features_items');
         this.searchProductInput = page.getByRole('textbox', { name: 'Search Product' });
-        this.searchButton = page.getByRole('button', { name: 'Search' });
+        this.searchButton = page.locator('#submit_search');
         this.categoryHeader = page.getByRole('heading', { name: 'Category' });
         this.brandsHeader = page.getByRole('heading', { name: 'Brands' });
         this.saleImage = page.locator('#sale_image');
@@ -50,8 +50,14 @@ export class ProductsPage extends BasePage {
         return await this.productInfo(index).locator('h2').innerText();
     }
 
-    async getProductImage(index: number): Promise<string | null> {
-        return await this.productInfo(index).locator('img').getAttribute('src');
+    async getProductImage(index: number): Promise<string> {
+        const src = await this.productInfo(index).locator('img').getAttribute('src');
+        
+        if (!src) {
+            throw new Error(`Image src is null for product at index ${index}`);
+        }
+
+        return src;
     }
 
     async clickViewProduct(index: number) {

@@ -33,6 +33,10 @@ export class NavBar {
         await this.deleteAccountLink.click();
     }
 
+    async goToProductsPage() {
+        await this.productsLink.click();
+    }
+
     async isUserLoggedIn(): Promise<boolean> {
         return this.logoutLink.isVisible();
     }
