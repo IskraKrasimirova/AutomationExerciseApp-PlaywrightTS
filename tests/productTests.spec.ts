@@ -3,6 +3,8 @@ import { config } from '../utils/config';
 import { HomePage } from '../pages/homePage';
 import { ProductsPage } from '../pages/productsPage';
 import { ProductDetailsPage } from '../pages/productDetailsPage';
+import { ProductData } from '../models/productData';
+
 
 test.describe('Product details tests @product', () => {
 
@@ -30,25 +32,16 @@ test.describe('Product details tests @product', () => {
         await productDetailsPage.verifyProductImageIs(firstProductImageSrc);
     });
 
+    test('Search for a product and verify results @smoke', async ({ page }) => {
+        const homePage = new HomePage(page);
+        await homePage.verifyIsAtHomePage();
+        await homePage.navBar.goToProductsPage();
+        const productsPage = new ProductsPage(page);
+        await productsPage.verifyIsAtProductsPage();
+
+        const productToSearch = ProductData.getRandomProduct();
+        await productsPage.searchForProduct(productToSearch);
+        await productsPage.verifySearchResultsAreDisplayed(productToSearch);
+
+    });
 });
-
-
-// [Test]
-//         [Category("Smoke")]
-//         [AllureFeature("Smoke")]
-//         public async Task ViewProductDetails_ForTheFirstProduct_DisplaysCorrectDetails()
-//         {
-//             await _homePage.VerifyIsAtHomePage();
-//             await _homePage.NavBar.GoToProductsPage();
-//             await _productsPage.VerifyIsAtProductsPage();
-
-//             var productName = await _productsPage.GetFirstProductName();
-//             var productPrice = await _productsPage.GetFirstProductPrice();
-//             var productImageSrc = await _productsPage.GetFirstProductImageSrc();
-
-//             await _productsPage.ClickViewFirstProduct();
-//             await _productDetailsPage.VerifyIsAtProductDetailsPage();
-//             await _productDetailsPage.VerifyProductNameIs(productName);
-//             await _productDetailsPage.VerifyProductPriceIs(productPrice);
-//             await _productDetailsPage.VerifyProductImageIs(productImageSrc);
-//         }

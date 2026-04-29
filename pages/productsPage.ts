@@ -12,6 +12,7 @@ export class ProductsPage extends BasePage {
     private brandsHeader: Locator;
     private saleImage: Locator;
     private productItems: Locator;
+    private searchedProductsHeader: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -24,6 +25,7 @@ export class ProductsPage extends BasePage {
         this.brandsHeader = page.getByRole('heading', { name: 'Brands' });
         this.saleImage = page.locator('#sale_image');
         this.productItems = page.locator('.product-image-wrapper');
+        this.searchedProductsHeader = page.getByRole('heading', { name: 'Searched Products' });
     }
 
     productItem(index: number): Locator {
@@ -52,7 +54,7 @@ export class ProductsPage extends BasePage {
 
     async getProductImage(index: number): Promise<string> {
         const src = await this.productInfo(index).locator('img').getAttribute('src');
-        
+
         if (!src) {
             throw new Error(`Image src is null for product at index ${index}`);
         }
@@ -83,5 +85,22 @@ export class ProductsPage extends BasePage {
         await expect.soft(this.categoryHeader).toBeVisible();
         await expect.soft(this.brandsHeader).toBeVisible();
         await expect.soft(this.saleImage).toBeVisible();
+    }
+
+    async verifySearchResultsAreDisplayed(searchTerm: string) {
+        const encodedSearchTerm = encodeURIComponent(searchTerm);
+
+        await expect(this.page).toHaveURL(new RegExp(`${UiUrls.products}\\?search=${encodedSearchTerm}`));
+
+        await expect(this.searchedProductsHeader).toBeVisible();
+        await expect(this.productsList).toBeVisible();
+
+        const count = await this.productItems.count();
+        expect(count).toBeGreaterThan(0);
+
+        // IMPORTANT:
+        // DO NOT validate relevance by name, because search also matches category/brand,
+        // which are NOT visible in the search results UI.
+        // Therefore, the validation is limited to what the user sees.
     }
 }
