@@ -1,8 +1,20 @@
-import { test as base } from '@playwright/test';
+import { test as base, Page } from '@playwright/test';
 
-export const test = base.extend({
-    // You can define fixtures here that will be available in all your tests
-    // For example, you could create a fixture for a logged-in user   
+import { HomePage } from '../pages/homePage';
+import { LoginPage } from '../pages/loginPage';
+import { SignupPage } from '../pages/signupPage';
+import { AccountCreatedPage } from '../pages/accountCreatedPage';
+import { AccountDeletedPage } from '../pages/accountDeletedPage';
+import { ProductsPage } from '../pages/productsPage';
+import { ProductDetailsPage } from '../pages/productDetailsPage';
+
+import { Pages } from '../context/pages';
+
+export const test = base.extend<{
+    pages: Pages;
+    page: Page;
+}, {}>({
+    // GLOBAL PAGE FIXTURE (ad-block + cleanup)
     page: async ({ page }, use) => {
         await page.route('**/*', route => {
             const url = route.request().url();
@@ -19,5 +31,23 @@ export const test = base.extend({
 
         await use(page);
         await page.close();
+    },
+
+    // PAGES CONTEXT FIXTURE
+    pages: async ({ page }, use) => {
+        const pages = new Pages(
+            new HomePage(page),
+            new LoginPage(page),
+            new SignupPage(page),
+            new AccountCreatedPage(page),
+            new AccountDeletedPage(page),
+            new ProductsPage(page),
+            new ProductDetailsPage(page)
+        );
+
+        // await use(pages);
+        await (use as unknown as (p: Pages) => Promise<void>)(pages);
     }
 });
+
+export const expect = test.expect;

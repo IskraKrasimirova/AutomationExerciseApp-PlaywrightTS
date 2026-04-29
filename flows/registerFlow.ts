@@ -1,15 +1,13 @@
-import { Page } from '@playwright/test';
-import { HomePage } from '../pages/homePage';
-import { LoginPage } from '../pages/loginPage';
-import { SignupPage } from '../pages/signupPage';
-import { AccountCreatedPage } from '../pages/accountCreatedPage';
+import { Pages } from '../context/pages';
 import { UserModel } from '../models/userModel';
 
-export async function registerUser(page: Page, user: UserModel) {
-    const homePage = new HomePage(page);
-    const loginPage = new LoginPage(page);
-    const signupPage = new SignupPage(page);
-    const accountCreatedPage = new AccountCreatedPage(page);
+export async function registerUser(pages: Pages, user: UserModel) {
+    const {
+        homePage,
+        loginPage,
+        signupPage,
+        accountCreatedPage
+    } = pages;
 
     await homePage.acceptCookiesIfPresent();
     await homePage.navBar.goToLoginPage();

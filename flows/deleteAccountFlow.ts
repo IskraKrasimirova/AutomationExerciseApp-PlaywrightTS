@@ -1,13 +1,8 @@
-import { Page } from '@playwright/test';
-import { HomePage } from '../pages/homePage';
-import { AccountDeletedPage } from '../pages/accountDeletedPage';
+import { Pages } from '../context/pages';
 
-export async function deleteUserAccount(page: Page) {
-    const homePage = new HomePage(page);
-    const accountDeletedPage = new AccountDeletedPage(page);
-
-    await homePage.navBar.deleteAccount();
-    await accountDeletedPage.verifyAccountDeleted();
-    await accountDeletedPage.clickContinue();
-    await homePage.verifyIsAtHomePage();
+export async function deleteUserAccount(pages: Pages) {
+    await pages.homePage.navBar.deleteAccount();
+    await pages.accountDeletedPage.verifyAccountDeleted();
+    await pages.accountDeletedPage.clickContinue();
+    await pages.homePage.verifyIsAtHomePage();
 }

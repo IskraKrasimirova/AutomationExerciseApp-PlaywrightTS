@@ -1,20 +1,24 @@
 import { expect, Locator, Page } from "@playwright/test";
 import { BasePage } from "./basePage";
-import {config} from "../utils/config";
+import { config } from "../utils/config";
 
 export class HomePage extends BasePage {
-    
-    private logo: Locator;
-    private header: Locator;
-    private consentButton: Locator;
 
-    constructor(page: Page) {
-        super(page);
+  private logo: Locator;
+  private header: Locator;
+  private consentButton: Locator;
 
-        this.logo = page.getByRole('link', { name: 'Home' });
-        this.header = page.locator('.item.active h1');
-        this.consentButton = page.getByRole('button', { name: 'Consent' });
-    }
+  constructor(page: Page) {
+    super(page);
+
+    this.logo = page.getByRole('link', { name: 'Home' });
+    this.header = page.locator('.item.active h1');
+    this.consentButton = page.getByRole('button', { name: 'Consent' });
+  }
+
+  async open() {
+    await this.page.goto(config.baseUrl);
+  }
 
   async acceptCookiesIfPresent() {
     if (await this.consentButton.isVisible()) {
