@@ -1,5 +1,5 @@
-import { test } from '../tests/setup';
-import { ProductData } from '../models/productData';
+import { test } from '../setup';
+import { ProductData } from '../../models/productData';
 
 
 test.describe('Product details tests @product', () => {

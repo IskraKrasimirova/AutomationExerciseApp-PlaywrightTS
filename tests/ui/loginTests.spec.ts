@@ -1,8 +1,8 @@
-import { test } from '../tests/setup';
-import { registerUser } from '../flows/registerFlow';
-import { deleteUserAccount } from '../flows/deleteAccountFlow';
-import { UserFactory } from '../factories/userFactory';
-import { UserModel } from '../models/userModel';;
+import { test } from '../setup';
+import { registerUser } from '../../flows/registerFlow';
+import { deleteUserAccount } from '../../flows/deleteAccountFlow';
+import { UserFactory } from '../../factories/userFactory';
+import { UserModel } from '../../models/userModel';
 
 test.describe('Login tests @login', () => {
 

@@ -1,7 +1,7 @@
-import { test } from '../tests/setup';
-import { UserFactory } from '../factories/userFactory';
-import { registerUser } from '../flows/registerFlow';
-import { deleteUserAccount } from '../flows/deleteAccountFlow';
+import { test } from '../setup';
+import { UserFactory } from '../../factories/userFactory';
+import { registerUser } from '../../flows/registerFlow';
+import { deleteUserAccount } from '../../flows/deleteAccountFlow';
 
 
 test.describe('Register tests @register', () => {
