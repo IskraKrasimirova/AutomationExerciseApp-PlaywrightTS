@@ -4,7 +4,7 @@ import { registerUser } from '../../flows/registerFlow';
 import { deleteUserAccount } from '../../flows/deleteAccountFlow';
 
 
-test.describe('Register tests @register', () => {
+test.describe('Register tests @ui @register', () => {
 
     test.beforeEach(async ({ pages }) => {
         await pages.homePage.open();

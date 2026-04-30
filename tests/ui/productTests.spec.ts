@@ -2,7 +2,7 @@ import { test } from '../setup';
 import { ProductData } from '../../models/productData';
 
 
-test.describe('Product details tests @product', () => {
+test.describe('Product details tests @ui @products', () => {
 
     test.beforeEach(async ({ pages }) => {
         await pages.homePage.open();

@@ -2,10 +2,10 @@ import { test, expect } from '@playwright/test';
 import { ApiUrls } from '../../utils/api/apiUrls';
 import { config } from '../../utils/config';
 
-test.describe('Brands API - /brandsList', () => {
+test.describe('@api @brands Brands API - /brandsList', () => {
   const brandsApiEndpoint = config.api.baseUrl + ApiUrls.brandsList;
 
-    test('GET /brandsList returns all brands and each brand has required fields', async ({ request }) => {
+    test('@smoke GET /brandsList returns all brands and each brand has required fields', async ({ request }) => {
         const response = await request.get(brandsApiEndpoint);
 
         expect(response.status()).toBe(200); 
@@ -21,7 +21,7 @@ test.describe('Brands API - /brandsList', () => {
         }
     });
 
-    test('PUT /brandsList returns 405 in response body', async ({ request }) => {
+    test('@regression PUT /brandsList returns 405 in response body', async ({ request }) => {
         const response = await request.put(brandsApiEndpoint);
         expect(response.status()).toBe(200);
 

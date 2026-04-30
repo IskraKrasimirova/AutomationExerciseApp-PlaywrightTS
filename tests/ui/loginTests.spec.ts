@@ -4,7 +4,7 @@ import { deleteUserAccount } from '../../flows/deleteAccountFlow';
 import { UserFactory } from '../../factories/userFactory';
 import { UserModel } from '../../models/userModel';
 
-test.describe('Login tests @login', () => {
+test.describe('Login tests @ui @login', () => {
 
     let user: UserModel;
 
