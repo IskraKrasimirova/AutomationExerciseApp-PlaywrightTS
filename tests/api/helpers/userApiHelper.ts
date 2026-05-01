@@ -56,7 +56,7 @@ export class UserApiHelper {
 
         if (data.responseCode !== 200) {
             console.warn(
-                `[WARN] DeleteUser failed (known API issue). ResponseCode: ${data.responseCode}, Message: ${data.message}`
+                `[WARN] DeleteUser failed. ResponseCode: ${data.responseCode}, Message: ${data.message}`
             );
         }
     }
