@@ -60,4 +60,26 @@ export class UserApiHelper {
             );
         }
     }
+
+    createAccountFormData(user: ApiUserModel): Record<string, any> {
+        return {
+            name: user.name,
+            email: user.email,
+            password: user.password,
+            title: user.title,
+            birth_date: user.dayOfBirth,
+            birth_month: user.monthOfBirth,
+            birth_year: user.yearOfBirth,
+            firstname: user.firstName,
+            lastname: user.lastName,
+            company: user.company,
+            address1: user.address,
+            address2: user.address2,
+            country: user.country,
+            state: user.state,
+            city: user.city,
+            zipcode: user.zipcode,
+            mobile_number: user.mobileNumber
+        };
+    }
 }
