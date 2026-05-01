@@ -5,6 +5,7 @@ import { ApiUserModel } from "../../models/apiUserModel";
 import { UserApiHelper } from "./helpers/userApiHelper";
 
 test.describe('@api @login Login API - /verifyLogin"', () => {
+    const verifyLoginApiEndpoint = config.api.baseUrl + ApiUrls.verifyLogin;
     let userApiHelper: UserApiHelper;
     let testUser: ApiUserModel;
 
@@ -20,7 +21,6 @@ test.describe('@api @login Login API - /verifyLogin"', () => {
     });
 
     test('@smoke User can login successfully with valid credentials', async ({ request }) => {
-        const verifyLoginApiEndpoint = config.api.baseUrl + ApiUrls.verifyLogin;
         const response = await request.post(verifyLoginApiEndpoint, {
             form: {
                 email: testUser.email,
@@ -33,5 +33,35 @@ test.describe('@api @login Login API - /verifyLogin"', () => {
         const body = await response.json();
         expect(body.responseCode).toBe(200);
         expect(body.message).toContain("User exists");
+    });
+
+    test("@regression POST /verifyLogin with wrong password returns 404", async ({ request }) => {
+        const response = await request.post(verifyLoginApiEndpoint, {
+            form: {
+                email: testUser.email,
+                password: "wrongPassword123"
+            }
+        });
+
+        expect(response.status()).toBe(200); // API always returns 200 even on error
+
+        const body = await response.json();
+        expect(body.responseCode).toBe(404);
+        expect(body.message).toContain("User not found");
+    });
+
+    test("@regression POST /verifyLogin with non-existing email returns 404", async ({ request }) => {
+        const response = await request.post(verifyLoginApiEndpoint, {
+            form: {
+                email: "nonexisting@example.com",
+                password: "somePassword"
+            }
+        });
+
+        expect(response.status()).toBe(200);
+
+        const body = await response.json();
+        expect(body.responseCode).toBe(404);
+        expect(body.message).toContain("User not found");
     });
 });

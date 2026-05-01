@@ -33,14 +33,10 @@ export class UserApiHelper {
             }
         });
 
-        const raw = await response.text();
-        console.log("CREATE USER RAW RESPONSE:", raw);
         const data = await response.json();
 
         if (data.responseCode !== 201) {
-            throw new Error(
-                `Failed to create user. ResponseCode: ${data.responseCode}, Message: ${data.message}`
-            );
+            throw new Error(`Failed to create user. ResponseCode: ${data.responseCode}, Message: ${data.message}`);
         }
 
         return user;
