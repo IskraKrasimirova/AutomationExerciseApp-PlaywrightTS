@@ -35,26 +35,43 @@ test.describe('@api @login Login API - /verifyLogin"', () => {
         expect(body.message).toContain("User exists");
     });
 
-    test("@regression POST /verifyLogin with wrong password returns 404", async ({ request }) => {
+    test("@regression Login with missing email returns 400", async ({ request }) => {
         const response = await request.post(verifyLoginApiEndpoint, {
             form: {
-                email: testUser.email,
-                password: "wrongPassword123"
+                password: testUser.password
             }
         });
 
-        expect(response.status()).toBe(200); // API always returns 200 even on error
+        expect(response.status()).toBe(200);
 
         const body = await response.json();
-        expect(body.responseCode).toBe(404);
-        expect(body.message).toContain("User not found");
+        expect(body.responseCode).toBe(400);
+        expect(body.message).toBe(
+            "Bad request, email or password parameter is missing in POST request."
+        );
     });
 
-    test("@regression POST /verifyLogin with non-existing email returns 404", async ({ request }) => {
+    test("@regression Login with missing password returns 400", async ({ request }) => {
         const response = await request.post(verifyLoginApiEndpoint, {
             form: {
-                email: "nonexisting@example.com",
-                password: "somePassword"
+                email: testUser.email
+            }
+        });
+
+        expect(response.status()).toBe(200);
+
+        const body = await response.json();
+        expect(body.responseCode).toBe(400);
+        expect(body.message).toBe(
+            "Bad request, email or password parameter is missing in POST request."
+        );
+    });
+
+    test("@regression Login with invalid email and valid password returns 404", async ({ request }) => {
+        const response = await request.post(verifyLoginApiEndpoint, {
+            form: {
+                email: "invalid@email.com",
+                password: testUser.password
             }
         });
 
@@ -62,6 +79,46 @@ test.describe('@api @login Login API - /verifyLogin"', () => {
 
         const body = await response.json();
         expect(body.responseCode).toBe(404);
-        expect(body.message).toContain("User not found");
+        expect(body.message).toBe("User not found!");
+    });
+
+    test("@regression Login with valid email and invalid password returns 404", async ({ request }) => {
+        const response = await request.post(verifyLoginApiEndpoint, {
+            form: {
+                email: testUser.email,
+                password: "wrongpassword"
+            }
+        });
+
+        expect(response.status()).toBe(200);
+
+        const body = await response.json();
+        expect(body.responseCode).toBe(404);
+        expect(body.message).toBe("User not found!");
+    });
+
+    test("@regression Login with both invalid email and password returns 404", async ({ request }) => {
+        const response = await request.post(verifyLoginApiEndpoint, {
+            form: {
+                email: "invalidemail@test.com",
+                password: "wrongpassword"
+            }
+        });
+
+        expect(response.status()).toBe(200);
+
+        const body = await response.json();
+        expect(body.responseCode).toBe(404);
+        expect(body.message).toBe("User not found!");
+    });
+
+    test("@regression DELETE method returns 405", async ({ request }) => {
+        const response = await request.delete(verifyLoginApiEndpoint);
+
+        expect(response.status()).toBe(200);
+
+        const body = await response.json();
+        expect(body.responseCode).toBe(405);
+        expect(body.message).toBe("This request method is not supported.");
     });
 });
