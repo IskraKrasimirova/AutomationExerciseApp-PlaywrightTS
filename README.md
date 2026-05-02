@@ -2,7 +2,7 @@
 
 ![Playwright Tests](https://github.com/IskraKrasimirova/AutomationExerciseApp-PlaywrightTS/actions/workflows/playwright.yml/badge.svg)
 
-[![Allure Report](https://img.shields.io/badge/Allure-Report-6f42c1?logo=allure&logoColor=white)](https://iskrakrasimirova.github.io/AutomationExerciseApp-PlaywrightTS/allure-report/)
+[![Allure Report](https://img.shields.io/badge/Allure-Report-6f42c1?logo=allure&logoColor=white)](https://iskrakrasimirova.github.io/AutomationExerciseApp-PlaywrightTS/)
 
 This project contains automated UI and API tests for the application  
 [AutomationExercise](https://automationexercise.com/), implemented using **Playwright** and **TypeScript**.
@@ -88,7 +88,7 @@ npm run allure:generate
 npm run allure:open
 ```
 
-Or using npx directly:
+### Or using npx directly:
 ```
 npx allure generate allure-results --clean -o allure-report
 npx allure open allure-report
@@ -101,7 +101,7 @@ npx allure open allure-report
 
 The latest published Allure report is available here:
 
-👉 **https://iskrakrasimirova.github.io/AutomationExerciseApp-PlaywrightTS/allure-report/**
+👉 **[Open Allure Report](https://iskrakrasimirova.github.io/AutomationExerciseApp-PlaywrightTS/)**
 
 ---
 
