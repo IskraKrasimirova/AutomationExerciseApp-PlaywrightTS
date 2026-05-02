@@ -126,22 +126,10 @@ test.describe('@api Update Account API - /updateAccount', () => {
         expect(body.message).toContain("Bad request");
     });
 
-    // User is not deleted, so it is updated successfully and API returns 200 with "User updated!" message instead of 404.
-    test.skip('@regression @issue Updating non-existing user returns 404', async ({ request }) => {
+    test('@regression Updating non-existing user returns 404', async ({ request }) => {
         const formData = userApiHelper.createAccountFormData(user);
         // First delete the user to ensure it does not exist
         await userApiHelper.deleteUser(user.email, user.password);
-        await new Promise(r => setTimeout(r, 10000));
-        // Then attempt to get user details to confirm deletion
-        const getUserDetailApiEndpoint = config.api.baseUrl + ApiUrls.userDetailByEmail;
-        const detail = await request.get(getUserDetailApiEndpoint, {
-            params: { email: user.email }
-        });
-        const detailBody = await detail.json();
-        console.log("User detail response after deletion:", detailBody);
-
-        expect(detailBody.responseCode).toBe(404);
-
         // Then attempt to update the deleted user
         const response = await request.put(updateAccountApiEndpoint, { form: formData });
 

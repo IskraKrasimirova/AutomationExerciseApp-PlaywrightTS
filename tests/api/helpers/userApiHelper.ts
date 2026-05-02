@@ -44,12 +44,8 @@ export class UserApiHelper {
 
     async deleteUser(email: string, password: string): Promise<void> {
         const deleteAccountApiEndpoint = config.api.baseUrl + ApiUrls.deleteAccount;
-        const response = await this.request.post(deleteAccountApiEndpoint, {
-            form: {
-                _method: "DELETE",
-                email,
-                password
-            }
+        const response = await this.request.delete(deleteAccountApiEndpoint, {
+            form: { email, password }
         });
 
         const data = await response.json();
