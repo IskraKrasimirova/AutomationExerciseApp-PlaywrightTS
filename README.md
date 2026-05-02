@@ -2,6 +2,8 @@
 
 ![Playwright Tests](https://github.com/IskraKrasimirova/AutomationExerciseApp-PlaywrightTS/actions/workflows/playwright.yml/badge.svg)
 
+[![Allure Report](https://img.shields.io/badge/Allure-Report-6f42c1?logo=allure&logoColor=white)](https://iskrakrasimirova.github.io/AutomationExerciseApp-PlaywrightTS/allure-report/)
+
 This project contains automated UI and API tests for the application  
 [AutomationExercise](https://automationexercise.com/), implemented using **Playwright** and **TypeScript**.
 
@@ -72,13 +74,45 @@ npx playwright test --grep "@api|@search"
 
 ---
 
+## 📊 Allure Report (Local)
+
+To generate and open the Allure report locally:
+
+### Generate the report:
+```
+npm run allure:generate
+```
+
+### Open the report:
+```
+npm run allure:open
+```
+
+Or using npx directly:
+```
+npx allure generate allure-results --clean -o allure-report
+npx allure open allure-report
+```
+
+
+---
+
+## 🌐 Allure Report (GitHub Pages)
+
+The latest published Allure report is available here:
+
+👉 **https://iskrakrasimirova.github.io/AutomationExerciseApp-PlaywrightTS/allure-report/**
+
+---
+
 ## 🏗️ CI/CD – GitHub Actions
 
 The project includes a ready-to-use GitHub Actions workflow:
 
-- Installs dependencies
-- Installs Playwright browsers
-- Runs the full test suite on every push and pull request
+- Installs dependencies  
+- Installs Playwright browsers  
+- Runs the full test suite on every push and pull request  
+- Generates and publishes Allure report to GitHub Pages  
 
 Workflow file:  
 `.github/workflows/playwright.yml`
@@ -87,9 +121,8 @@ Workflow file:
 
 ## 📌 Future Improvements
 
-- Add test data fixtures
-- Add reporting (HTML / Allure)
-- Add environment configuration support
+- Add test data fixtures  
+- Add environment configuration support  
 
 ---
 
