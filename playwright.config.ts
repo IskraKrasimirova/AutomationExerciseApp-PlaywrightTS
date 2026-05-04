@@ -46,8 +46,15 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    // API tests
+    {
+      name: 'api',
+      testMatch: /tests\/api\/.*\.spec\.ts/,
+    },
+    // UI tests
     {
       name: 'chromium',
+      testMatch: /tests\/ui\/.*\.spec\.ts/,
       use: {
         // ...devices['Desktop Chrome'],
         viewport: null,
@@ -56,11 +63,13 @@ export default defineConfig({
 
     {
       name: 'firefox',
+      testMatch: /tests\/ui\/.*\.spec\.ts/,
       use: { ...devices['Desktop Firefox'] },
     },
 
     {
       name: 'webkit',
+      testMatch: /tests\/ui\/.*\.spec\.ts/,
       use: { ...devices['Desktop Safari'] },
     },
 
