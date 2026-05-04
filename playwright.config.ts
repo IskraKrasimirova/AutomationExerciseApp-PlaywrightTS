@@ -25,11 +25,11 @@ export default defineConfig({
   reporter: process.env.CI
     ? [
       ['github'],
-      ['allure-playwright'],
+      ['allure-playwright', { outputFolder: 'allure-results' }],
       ['html']
     ]
     : [
-      ['allure-playwright'],
+      ['allure-playwright', { outputFolder: 'allure-results' }],
       ['html']
     ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
