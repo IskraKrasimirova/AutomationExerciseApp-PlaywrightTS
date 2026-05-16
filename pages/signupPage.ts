@@ -46,7 +46,7 @@ export class SignupPage extends BasePage {
         this.mrsRadioButton = this.accountInfoForm.getByLabel('Mrs.');
 
         // ACCOUNT INFO
-        this.nameInput = this.accountInfoForm.getByLabel('Name');
+        this.nameInput = this.accountInfoForm.locator('[data-qa="name"]');
         this.emailInput = this.accountInfoForm.getByLabel('Email');
         this.passwordInput = this.accountInfoForm.getByLabel('Password');
 
