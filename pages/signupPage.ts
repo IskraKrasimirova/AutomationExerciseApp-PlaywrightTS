@@ -42,13 +42,13 @@ export class SignupPage extends BasePage {
         this.accountInfoForm = page.locator('.login-form');
         this.accountInfoHeader = this.accountInfoForm.getByRole('heading', { name: 'Enter Account Information' });
         this.addressInfoHeader = this.accountInfoForm.getByRole('heading', { name: 'Address Information' });
-        this.mrRadioButton = this.accountInfoForm.locator('#id_gender1');
-        this.mrsRadioButton = this.accountInfoForm.locator('#id_gender2');
+        this.mrRadioButton = this.accountInfoForm.getByLabel('Mr.');
+        this.mrsRadioButton = this.accountInfoForm.getByLabel('Mrs.');
 
         // ACCOUNT INFO
-        this.nameInput = this.accountInfoForm.locator('[data-qa="name"]');
-        this.emailInput = this.accountInfoForm.locator('[data-qa="email"]');
-        this.passwordInput = this.accountInfoForm.locator('[data-qa="password"]');
+        this.nameInput = this.accountInfoForm.getByLabel('Name');
+        this.emailInput = this.accountInfoForm.getByLabel('Email');
+        this.passwordInput = this.accountInfoForm.getByLabel('Password');
 
         this.daySelect = this.accountInfoForm.locator('#days');
         this.monthSelect = this.accountInfoForm.locator('#months');

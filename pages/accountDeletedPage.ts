@@ -13,7 +13,7 @@ export class AccountDeletedPage extends BasePage {
 
         this.accountDeletedHeader = page.getByRole('heading', { name: 'Account Deleted!' });
         this.deletingMessage = page.getByText('Your account has been permanently deleted!');
-        this.continueButton = page.locator('[data-qa="continue-button"]');
+        this.continueButton = page.getByRole('link', { name: 'Continue' });
     }
 
     async clickContinue() {

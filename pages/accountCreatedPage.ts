@@ -13,7 +13,7 @@ export class AccountCreatedPage extends BasePage {
 
         this.accountCreatedHeader = page.getByRole('heading', { name: 'Account Created!' });
         this.greetingMessage = page.getByText('Congratulations! Your new account has been successfully created!');
-        this.continueButton = page.locator('[data-qa="continue-button"]');
+        this.continueButton = page.getByRole('link', { name: 'Continue' });
     }
 
     async clickContinue() {
