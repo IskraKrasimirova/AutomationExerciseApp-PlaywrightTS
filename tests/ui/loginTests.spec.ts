@@ -9,6 +9,9 @@ test.describe('Login tests @ui @login', () => {
     let user: UserModel;
 
     test.beforeEach(async ({ pages }) => {
+        test.info().annotations.push({ type: "tag", description: "ui" });
+        test.info().annotations.push({ type: "tag", description: "login" });
+
         const {
             homePage,
             loginPage
@@ -42,6 +45,8 @@ test.describe('Login tests @ui @login', () => {
     });
 
     test('User can login successfully @smoke', async ({ pages }) => {
+        test.info().annotations.push({ type: "tag", description: "smoke" });
+
         const {
             homePage,
             loginPage
@@ -53,6 +58,8 @@ test.describe('Login tests @ui @login', () => {
     });
 
     test('User cannot login with wrong password @regression', async ({ pages }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const loginPage = pages.loginPage;
 
         await loginPage.login(user.email, 'wrongpassword');
@@ -60,6 +67,8 @@ test.describe('Login tests @ui @login', () => {
     });
 
     test('User cannot login with non-existing email @regression', async ({ pages }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+        
         const loginPage = pages.loginPage;
 
         await loginPage.login('nonexisting@email.com', 'somepassword');

@@ -7,16 +7,26 @@ import { deleteUserAccount } from '../../flows/deleteAccountFlow';
 test.describe('Register tests @ui @register', () => {
 
     test.beforeEach(async ({ pages }) => {
+        test.info().annotations.push({ type: "tag", description: "ui" });
+        test.info().annotations.push({ type: "tag", description: "register" });
+
         await pages.homePage.open();
     });
 
     test('User can register successfully @smoke', async ({ pages }) => {
+        test.info().annotations.push({ type: "tag", description: "smoke" });
+
+        const user = UserFactory.createDefault();
+        await registerUser(pages, user);
+
         const newUser = UserFactory.createDefault();
         await registerUser(pages, newUser);
         await deleteUserAccount(pages);
     });
 
     test('Newly registered user can login successfully @e2e', async ({ pages }) => {
+        test.info().annotations.push({ type: "tag", description: "e2e" });
+
         const {
             homePage,
             loginPage
@@ -37,6 +47,9 @@ test.describe('Register tests @ui @register', () => {
     });
 
     test('User cannot register with existing email @e2e @regression', async ({ pages }) => {
+        test.info().annotations.push({ type: "tag", description: "e2e" });
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const {
             homePage,
             loginPage

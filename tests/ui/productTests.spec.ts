@@ -5,10 +5,15 @@ import { ProductData } from '../../models/productData';
 test.describe('Product details tests @ui @products', () => {
 
     test.beforeEach(async ({ pages }) => {
+        test.info().annotations.push({ type: "tag", description: "ui" });
+        test.info().annotations.push({ type: "tag", description: "products" });
+        
         await pages.homePage.open();
     });
 
     test('View product details for the first product displays correct details @smoke', async ({ pages }) => {
+        test.info().annotations.push({ type: "tag", description: "smoke" });
+
         const {
             homePage,
             productsPage,
@@ -32,6 +37,8 @@ test.describe('Product details tests @ui @products', () => {
     });
 
     test('Search for a product and verify results @smoke', async ({ pages }) => {
+        test.info().annotations.push({ type: "tag", description: "smoke" });
+
         const {
             homePage,
             productsPage
@@ -44,6 +51,5 @@ test.describe('Product details tests @ui @products', () => {
         const productToSearch = ProductData.getRandomProduct();
         await productsPage.searchForProduct(productToSearch);
         await productsPage.verifySearchResultsAreDisplayed(productToSearch);
-
     });
 });
