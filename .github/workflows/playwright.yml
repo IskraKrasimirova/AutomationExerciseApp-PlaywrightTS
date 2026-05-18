@@ -22,6 +22,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # ⭐ Download previous Allure history from gh-pages
+      - name: Download previous Allure history
+        if: always()
+        run: |
+          git clone --depth 1 --branch gh-pages https://github.com/${{ github.repository }}.git gh-pages
+          if [ -d "gh-pages/allure-report/history" ]; then
+          echo "Found previous history"
+          mkdir -p allure-results/history
+          cp -R gh-pages/allure-report/history allure-results/
+          else
+          echo "No previous history found in gh-pages"
+          fi
+      
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -35,17 +48,6 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
 
-      # ⭐ Restore Allure history BEFORE generating new report
-      - name: Restore Allure history
-        if: always()
-        run: |
-          if [ -d "allure-report/history" ]; then
-            echo "Restoring Allure history..."
-            cp -R allure-report/history allure-results/history
-          else
-            echo "No previous history found."
-          fi
-          
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
