@@ -35,6 +35,17 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
 
+      # ⭐ Restore Allure history BEFORE generating new report
+      - name: Restore Allure history
+        if: always()
+        run: |
+          if [ -d "allure-report/history" ]; then
+            echo "Restoring Allure history..."
+            cp -R allure-report/history allure-results/history
+          else
+            echo "No previous history found."
+          fi
+          
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
