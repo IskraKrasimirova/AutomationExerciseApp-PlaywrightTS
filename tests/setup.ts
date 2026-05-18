@@ -22,7 +22,18 @@ export const test = base.extend<{
                 url.includes('googlesyndication') ||
                 url.includes('doubleclick') ||
                 url.includes('adnxs') ||
-                url.includes('amazon-adsystem')
+                url.includes('amazon-adsystem') ||
+                url.includes('ads') ||
+                url.includes('adservice') ||
+                url.includes('doubleclick') ||
+                url.includes('googlesyndication') ||
+                url.includes('pagead') ||
+                url.includes('taboola') ||
+                url.includes('outbrain') ||
+                url.includes('criteo') ||
+                url.includes('pubmatic') ||
+                url.includes('openx') ||
+                url.includes('zedo')
             ) {
                 return route.abort();
             }

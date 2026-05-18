@@ -5,6 +5,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -52,6 +53,7 @@ jobs:
           path: allure-report
 
   deploy:
+    if: always()
     needs: test
     runs-on: ubuntu-latest
     permissions:
