@@ -40,6 +40,20 @@ export const test = base.extend<{
             return route.continue();
         });
 
+        await page.addInitScript(() => {
+            const removeAds = () => {
+                document.querySelectorAll(
+                    '.modal-backdrop, .adsbygoogle, .google-auto-placed, .ad-container, .ad-banner'
+                ).forEach(el => el.remove());
+            };
+
+            // Remove ads on initial load
+            removeAds();
+
+            // Remove ads periodically (some ads are injected dynamically)
+            setInterval(removeAds, 500);
+        });
+
         await use(page);
         await page.close();
     },
