@@ -19,8 +19,6 @@ test.describe('Register tests @ui @register', () => {
         const user = UserFactory.createDefault();
         await registerUser(pages, user);
 
-        const newUser = UserFactory.createDefault();
-        await registerUser(pages, newUser);
         await deleteUserAccount(pages);
     });
 

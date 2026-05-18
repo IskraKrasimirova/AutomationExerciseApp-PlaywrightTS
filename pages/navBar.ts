@@ -26,7 +26,6 @@ export class NavBar {
     }
 
     async goToLoginPage() {
-        await this.loginLink.waitFor({ state: 'visible' });
         await this.loginLink.click();
     }
 
