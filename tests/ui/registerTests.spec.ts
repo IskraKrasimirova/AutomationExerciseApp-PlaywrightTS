@@ -8,7 +8,7 @@ test.describe('Register tests @ui @register', () => {
 
     test.beforeEach(async ({ pages }) => {
         test.info().annotations.push({ type: "tag", description: "ui" });
-        test.info().annotations.push({ type: "tag", description: "register" });
+        test.info().annotations.push({ type: "feature", description: "register" });
 
         await pages.homePage.open();
     });

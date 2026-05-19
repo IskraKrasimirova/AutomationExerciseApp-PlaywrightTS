@@ -10,7 +10,7 @@ test.describe('Login tests @ui @login', () => {
 
     test.beforeEach(async ({ pages }) => {
         test.info().annotations.push({ type: "tag", description: "ui" });
-        test.info().annotations.push({ type: "tag", description: "login" });
+        test.info().annotations.push({ type: "feature", description: "login" });
 
         const {
             homePage,
@@ -68,7 +68,7 @@ test.describe('Login tests @ui @login', () => {
 
     test('User cannot login with non-existing email @regression', async ({ pages }) => {
         test.info().annotations.push({ type: "tag", description: "regression" });
-        
+
         const loginPage = pages.loginPage;
 
         await loginPage.login('nonexisting@email.com', 'somepassword');

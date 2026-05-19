@@ -6,7 +6,7 @@ test.describe('Product details tests @ui @products', () => {
 
     test.beforeEach(async ({ pages }) => {
         test.info().annotations.push({ type: "tag", description: "ui" });
-        test.info().annotations.push({ type: "tag", description: "products" });
+        test.info().annotations.push({ type: "feature", description: "products" });
         
         await pages.homePage.open();
     });
