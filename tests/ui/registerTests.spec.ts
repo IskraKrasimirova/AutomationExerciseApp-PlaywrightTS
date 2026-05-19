@@ -13,13 +13,24 @@ test.describe('Register tests @ui @register', () => {
         await pages.homePage.open();
     });
 
+    test.afterEach(async ({ pages }) => {
+        try {
+            await deleteUserAccount(pages);
+        } catch (e) {
+            test.info().annotations.push({ type: "warning", description: "User deletion skipped or failed" });
+
+            await test.info().attach("deleteUserAccount error", {
+                body: String(e),
+                contentType: "text/plain"
+            });
+        }
+    });
+
     test('User can register successfully @smoke', async ({ pages }) => {
         test.info().annotations.push({ type: "tag", description: "smoke" });
 
         const user = UserFactory.createDefault();
         await registerUser(pages, user);
-
-        await deleteUserAccount(pages);
     });
 
     test('Newly registered user can login successfully @e2e', async ({ pages }) => {
@@ -40,8 +51,6 @@ test.describe('Register tests @ui @register', () => {
 
         await homePage.verifyIsAtHomePage();
         await homePage.navBar.verifyUserIsLoggedIn(user.name);
-
-        await deleteUserAccount(pages);
     });
 
     test('User cannot register with existing email @e2e @regression', async ({ pages }) => {
@@ -65,7 +74,5 @@ test.describe('Register tests @ui @register', () => {
 
         await homePage.verifyIsAtHomePage();
         await homePage.navBar.verifyUserIsLoggedIn(existingUser.name);
-
-        await deleteUserAccount(pages);
     });
 });
