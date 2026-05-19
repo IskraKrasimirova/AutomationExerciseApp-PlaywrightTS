@@ -86,15 +86,6 @@ jobs:
         if: always()
         run: npx allure generate allure-results --clean -o allure-report
 
-        
-      - name: Copy history into final report
-        if: always()
-        run: |
-          if [ -d "allure-results/history" ]; then
-            echo "Copying history into final report"
-            cp -R allure-results/history allure-report/
-          fi
-
       - name: Commit history to gh-pages
         if: always()
         env:
