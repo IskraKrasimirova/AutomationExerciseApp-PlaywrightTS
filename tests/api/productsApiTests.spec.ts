@@ -43,8 +43,3 @@ test.describe('@api @products Products API - /productsList', () => {
     expect(body.message).toBe('This request method is not supported.');
   });
 });
-
-test('dummy trend test', async () => {
-  test.info().annotations.push({ type: "tag", description: "api" });
-  expect(true).toBe(true);
-});
