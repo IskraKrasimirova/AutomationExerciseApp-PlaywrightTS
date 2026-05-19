@@ -8,6 +8,10 @@ test.describe('@api @products Products API - /productsList', () => {
   const productsApiEndpoint = config.api.baseUrl + ApiUrls.productsList;
 
   test('@smoke GET /productsList returns all products and each product has required fields', async ({ request }) => {
+    test.info().annotations.push({ type: "tag", description: "api" });
+    test.info().annotations.push({ type: "feature", description: "products" });
+    test.info().annotations.push({ type: "tag", description: "smoke" });
+
     const response = await request.get(productsApiEndpoint);
 
     expect(response.status()).toBe(200);
@@ -22,6 +26,10 @@ test.describe('@api @products Products API - /productsList', () => {
   });
 
   test('@regression POST /productsList returns 405 in response body', async ({ request }) => {
+    test.info().annotations.push({ type: "tag", description: "api" });
+    test.info().annotations.push({ type: "feature", description: "products" });
+    test.info().annotations.push({ type: "tag", description: "regression" });
+
     const response = await request.post(productsApiEndpoint);
 
     expect(response.status()).toBe(200);

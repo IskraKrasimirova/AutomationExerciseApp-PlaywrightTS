@@ -29,8 +29,7 @@ jobs:
           git clone --depth 1 --branch gh-pages https://github.com/${{ github.repository }}.git gh-pages
           if [ -d "gh-pages/allure-report/history" ]; then
             echo "Found previous history"
-            mkdir -p allure-results/history
-            cp -R gh-pages/allure-report/history/* allure-results/history/
+            cp -R gh-pages/allure-report/history allure-results/
           else
             echo "No previous history found in gh-pages"
           fi
@@ -90,6 +89,7 @@ jobs:
         if: always()
         run: |
           if [ -d "allure-results/history" ]; then
+            echo "Copying history into final report"
             cp -R allure-results/history allure-report/
           fi
 

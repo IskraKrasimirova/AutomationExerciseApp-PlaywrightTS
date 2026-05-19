@@ -11,6 +11,9 @@ test.describe('@api @deleteAccount Delete Account API - /deleteAccount', () => {
     let user: ApiUserModel;
 
     test.beforeEach(async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "api" });
+        test.info().annotations.push({ type: "feature", description: "deleteAccount" });
+
         userApiHelper = new UserApiHelper(request);
         user = UserFactory.createApiUser();
 
@@ -24,6 +27,8 @@ test.describe('@api @deleteAccount Delete Account API - /deleteAccount', () => {
     });
 
     test('@smoke User can delete account successfully with valid credentials', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "smoke" });
+
         const response = await request.delete(deleteAccountApiEndpoint, {
             form: {
                 email: user.email,
@@ -39,6 +44,8 @@ test.describe('@api @deleteAccount Delete Account API - /deleteAccount', () => {
     });
 
     test('@regression Deleting account with invalid credentials returns 404', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const response = await request.delete(deleteAccountApiEndpoint, {
             form: {
                 email: user.email,
@@ -54,6 +61,8 @@ test.describe('@api @deleteAccount Delete Account API - /deleteAccount', () => {
     });
 
     test('@regression Deleting non-existing user returns 404', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         // Delete once
         await request.delete(deleteAccountApiEndpoint, {
             form: { email: user.email, password: user.password }
@@ -78,6 +87,9 @@ test.describe('@api Update Account API - /updateAccount', () => {
     let user: ApiUserModel;
 
     test.beforeEach(async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "api" });
+        test.info().annotations.push({ type: "feature", description: "updateAccount" });
+
         userApiHelper = new UserApiHelper(request);
         user = UserFactory.createApiUser();
 
@@ -91,6 +103,8 @@ test.describe('@api Update Account API - /updateAccount', () => {
     });
 
     test('@smoke User can update account successfully with valid data', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "smoke" });
+
         const updatedUser = { ...user, name: "Updated Name" };
         const formData = userApiHelper.createAccountFormData(updatedUser);
         const response = await request.put(updateAccountApiEndpoint, { form: formData });
@@ -103,6 +117,8 @@ test.describe('@api Update Account API - /updateAccount', () => {
     });
 
     test('@regression Updating account with invalid email format returns 404', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const updatedUser = { ...user, email: "invalidemail" };
         const formData = userApiHelper.createAccountFormData(updatedUser);
         const response = await request.put(updateAccountApiEndpoint, { form: formData });
@@ -115,6 +131,8 @@ test.describe('@api Update Account API - /updateAccount', () => {
     });
 
     test('@regression Updating account with missing email returns 400', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const formData = userApiHelper.createAccountFormData(user);
         delete formData.email; // Remove required field email
         const response = await request.put(updateAccountApiEndpoint, { form: formData });
@@ -127,6 +145,8 @@ test.describe('@api Update Account API - /updateAccount', () => {
     });
 
     test('@regression Updating non-existing user returns 404', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const formData = userApiHelper.createAccountFormData(user);
         // First delete the user to ensure it does not exist
         await userApiHelper.deleteUser(user.email, user.password);
@@ -147,6 +167,9 @@ test.describe('@api Get User Detail API - /getUserDetailByEmail', () => {
     let user: ApiUserModel;
 
     test.beforeEach(async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "api" });
+        test.info().annotations.push({ type: "feature", description: "getUserDetail" });
+
         userApiHelper = new UserApiHelper(request);
         user = UserFactory.createApiUser();
 
@@ -160,6 +183,8 @@ test.describe('@api Get User Detail API - /getUserDetailByEmail', () => {
     });
 
     test('@smoke User can retrieve account details successfully with valid email', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "smoke" });
+        
         const response = await request.get(getUserDetailApiEndpoint, {
             params: { email: user.email }
         });
@@ -172,6 +197,8 @@ test.describe('@api Get User Detail API - /getUserDetailByEmail', () => {
     });
 
     test('@regression Retrieving account details for non-existent user returns 404', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const response = await request.get(getUserDetailApiEndpoint, {
             params: { email: "doesnotexist@test.com" }
         });
@@ -184,6 +211,9 @@ test.describe('@api Get User Detail API - /getUserDetailByEmail', () => {
     });
 
     test('@regression @issue Retrieving account details with invalid email format returns 200', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+        test.info().annotations.push({ type: "issue", description: "Invalid email format handling" });
+
         const response = await request.get(getUserDetailApiEndpoint, {
             params: { email: "invalid" }
         });
@@ -203,6 +233,8 @@ test.describe('@api Get User Detail API - /getUserDetailByEmail', () => {
     });
 
     test('@regression Retrieving account details without parameters returns 400', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const response = await request.get(getUserDetailApiEndpoint);
 
         expect(response.status()).toBe(200);

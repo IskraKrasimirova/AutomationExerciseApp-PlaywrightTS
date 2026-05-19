@@ -9,6 +9,10 @@ test.describe('@api @search Search Product API - /searchProduct', () => {
 
     for (const term of searchTerms) {
         test(`@smoke POST /searchProduct with searchTerm "${term}" returns matching products`, async ({ request }) => {
+            test.info().annotations.push({ type: "tag", description: "api" });
+            test.info().annotations.push({ type: "feature", description: "search" });
+            test.info().annotations.push({ type: "tag", description: "smoke" });
+
             const requestBody = { search_product: term };
             const response = await request.post(searchProductApiEndpoint, { form: requestBody });
             expect(response.status()).toBe(200);
@@ -27,6 +31,10 @@ test.describe('@api @search Search Product API - /searchProduct', () => {
     }
 
     test('@regression POST /searchProduct without searchTerm returns 400 error', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "api" });
+        test.info().annotations.push({ type: "feature", description: "search" });
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const response = await request.post(searchProductApiEndpoint, {
             form: {}
         });
@@ -42,6 +50,10 @@ test.describe('@api @search Search Product API - /searchProduct', () => {
     });
 
     test('@regression POST /searchProduct with non-existing search term returns empty product list', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "api" });
+        test.info().annotations.push({ type: "feature", description: "search" });
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const response = await request.post(searchProductApiEndpoint, {
             form: { search_product: 'notexistingproduct' }
         });
@@ -59,6 +71,10 @@ test.describe('@api @search Search Product API - /searchProduct', () => {
     });
 
     test('@regression POST /searchProduct with empty search term returns all products', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "api" });
+        test.info().annotations.push({ type: "feature", description: "search" });
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const response = await request.post(searchProductApiEndpoint, {
             form: { search_product: '' }
         });
@@ -78,6 +94,10 @@ test.describe('@api @search Search Product API - /searchProduct', () => {
 
     for (const term of mixedCaseTerms) {
         test(`@regression POST /searchProduct is case-insensitive for term "${term}"`, async ({ request }) => {
+            test.info().annotations.push({ type: "tag", description: "api" });
+            test.info().annotations.push({ type: "feature", description: "search" });
+            test.info().annotations.push({ type: "tag", description: "regression" });
+
             const response = await request.post(searchProductApiEndpoint, {
                 form: { search_product: term }
             });
@@ -101,6 +121,10 @@ test.describe('@api @search Search Product API - /searchProduct', () => {
 
     for (const term of spacedTerms) {
         test(`@regression POST /searchProduct with whitespace for search term "${term}" returns empty list`, async ({ request }) => {
+            test.info().annotations.push({ type: "tag", description: "api" });
+            test.info().annotations.push({ type: "feature", description: "search" });
+            test.info().annotations.push({ type: "tag", description: "regression" });
+
             const response = await request.post(searchProductApiEndpoint, {
                 form: { search_product: term }
             });
@@ -119,6 +143,10 @@ test.describe('@api @search Search Product API - /searchProduct', () => {
 
     for (const term of invalidSymbols) {
         test(`@regression POST /searchProduct with invalid symbols "${term}" returns empty list`, async ({ request }) => {
+            test.info().annotations.push({ type: "tag", description: "api" });
+            test.info().annotations.push({ type: "feature", description: "search" });
+            test.info().annotations.push({ type: "tag", description: "regression" });
+
             const response = await request.post(searchProductApiEndpoint, {
                 form: { search_product: term }
             });
@@ -132,6 +160,10 @@ test.describe('@api @search Search Product API - /searchProduct', () => {
     }
     // stress test to check if API can handle very long search terms without crashing
     test('@regression POST /searchProduct with very long search term returns empty list and does not crash', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "api" });
+        test.info().annotations.push({ type: "feature", description: "search" });
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const longSearchTerm = 'a'.repeat(500);
         const response = await request.post(searchProductApiEndpoint, {
             form: { search_product: longSearchTerm }

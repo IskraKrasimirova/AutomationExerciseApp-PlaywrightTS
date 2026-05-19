@@ -10,6 +10,8 @@ test.describe('@api @login Login API - /verifyLogin"', () => {
     let testUser: ApiUserModel;
 
     test.beforeEach(async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "api" });
+        test.info().annotations.push({ type: "feature", description: "login" });
         // Create user via API to ensure we have a valid user for login tests
         userApiHelper = new UserApiHelper(request);
         testUser = await userApiHelper.createUser();
@@ -21,6 +23,8 @@ test.describe('@api @login Login API - /verifyLogin"', () => {
     });
 
     test('@smoke User can login successfully with valid credentials', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "smoke" });
+
         const response = await request.post(verifyLoginApiEndpoint, {
             form: {
                 email: testUser.email,
@@ -36,6 +40,8 @@ test.describe('@api @login Login API - /verifyLogin"', () => {
     });
 
     test("@regression Login with missing email returns 400", async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const response = await request.post(verifyLoginApiEndpoint, {
             form: {
                 password: testUser.password
@@ -52,6 +58,8 @@ test.describe('@api @login Login API - /verifyLogin"', () => {
     });
 
     test("@regression Login with missing password returns 400", async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+        
         const response = await request.post(verifyLoginApiEndpoint, {
             form: {
                 email: testUser.email
@@ -68,6 +76,8 @@ test.describe('@api @login Login API - /verifyLogin"', () => {
     });
 
     test("@regression Login with invalid email and valid password returns 404", async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const response = await request.post(verifyLoginApiEndpoint, {
             form: {
                 email: "invalid@email.com",
@@ -83,6 +93,8 @@ test.describe('@api @login Login API - /verifyLogin"', () => {
     });
 
     test("@regression Login with valid email and invalid password returns 404", async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const response = await request.post(verifyLoginApiEndpoint, {
             form: {
                 email: testUser.email,
@@ -98,6 +110,8 @@ test.describe('@api @login Login API - /verifyLogin"', () => {
     });
 
     test("@regression Login with both invalid email and password returns 404", async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const response = await request.post(verifyLoginApiEndpoint, {
             form: {
                 email: "invalidemail@test.com",
@@ -113,6 +127,8 @@ test.describe('@api @login Login API - /verifyLogin"', () => {
     });
 
     test("@regression DELETE method returns 405", async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+        
         const response = await request.delete(verifyLoginApiEndpoint);
 
         expect(response.status()).toBe(200);

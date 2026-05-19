@@ -11,6 +11,9 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
     let user: ApiUserModel;
 
     test.beforeEach(async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "api" });
+        test.info().annotations.push({ type: "feature", description: "createAccount" });
+
         userApiHelper = new UserApiHelper(request);
         user = UserFactory.createApiUser();
     });
@@ -20,6 +23,8 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
     });
 
     test('@smoke User can create account successfully with valid data', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "smoke" });
+
         const formData = userApiHelper.createAccountFormData(user);
         const response = await request.post(createAccountApiEndpoint, { form: formData });
 
@@ -50,6 +55,8 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
 
     for (const missing of requiredFields) {
         test(`@regression Missing parameter '${missing}' returns 400`, async ({ request }) => {
+            test.info().annotations.push({ type: "tag", description: "regression" });
+
             const formData = userApiHelper.createAccountFormData(user);
             delete formData[missing];
 
@@ -73,6 +80,8 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
 
     for (const field of createAccountApiFieldsEmpty) {
         test(`@regression Empty value for '${field}' returns 201`, async ({ request }) => {
+            test.info().annotations.push({ type: "tag", description: "regression" });
+
             const formData = userApiHelper.createAccountFormData(user);
             formData[field] = "";
 
@@ -99,6 +108,8 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
 
     for (const invalid of invalidEmails) {
         test(`@regression Invalid email '${invalid}' returns 400`, async ({ request }) => {
+            test.info().annotations.push({ type: "tag", description: "regression" });
+
             const formData = userApiHelper.createAccountFormData(user);
             formData.email = invalid;
 
@@ -113,6 +124,9 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
 
     // Expected status code is 409 but API returns 400
     test('@regression @issue Duplicate email returns 400', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+        test.info().annotations.push({ type: "issue", description: "Duplicate email" });
+
         let formData = userApiHelper.createAccountFormData(user);
         let response = await request.post(createAccountApiEndpoint, { form: formData });
 
@@ -132,6 +146,9 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
     });
 
     test.skip('@regression @issue Invalid country returns 400', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+        test.info().annotations.push({ type: "issue", description: "Invalid country" });
+
         const formData = userApiHelper.createAccountFormData(user);
         formData.country = "NotARealCountry";
 
@@ -143,6 +160,8 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
     });
 
     test('@regression All fields empty returns 400', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const formData = userApiHelper.createAccountFormData(user);
 
         // Set all fields to empty string
@@ -159,6 +178,8 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
     });
 
     test('@regression All fields undefined returns 400', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const formData = userApiHelper.createAccountFormData(user);
 
         for (const key of Object.keys(formData)) {
@@ -173,6 +194,8 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
     });
 
     test('@regression Mixed empty and missing fields returns 400', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const formData = userApiHelper.createAccountFormData(user);
 
         formData.name = "";       // empty
@@ -187,6 +210,8 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
     });
 
     test('@regression Empty form data returns 400', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const response = await request.post(createAccountApiEndpoint, {
             form: {} // no fields at all
         });
@@ -198,6 +223,8 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
     });
 
     test('@regression Missing form data returns 400', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const response = await request.post(createAccountApiEndpoint);
 
         const body = await response.json();
@@ -207,6 +234,8 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
     });
 
     test('@regression Unknown fields are ignored and user is created', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+
         const formData = userApiHelper.createAccountFormData(user);
 
         // Add unknown fields
@@ -222,6 +251,8 @@ test.describe('@api @createAccount Create Account API - /createAccount', () => {
     });
 
     test('@regression GET method is not supported and returns 405', async ({ request }) => {
+        test.info().annotations.push({ type: "tag", description: "regression" });
+        
         const response = await request.get(createAccountApiEndpoint);
 
         expect(response.status()).toBe(405);
