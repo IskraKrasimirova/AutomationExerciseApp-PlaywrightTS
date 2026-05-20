@@ -86,7 +86,7 @@ jobs:
         if: always()
         run: npx allure generate allure-results --clean -o allure-report
 
-      - name: Commit history to gh-pages
+      - name: Commit Allure report to gh-pages
         if: always()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -94,7 +94,7 @@ jobs:
           git clone --depth 1 --branch gh-pages https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git gh-pages-commit
 
           mkdir -p gh-pages-commit/allure-report/history
-          cp -R allure-report/history/* gh-pages-commit/allure-report/history/
+          cp -R allure-report/* gh-pages-commit/allure-report/
 
           cd gh-pages-commit
 
