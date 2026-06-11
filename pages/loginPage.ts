@@ -66,4 +66,8 @@ export class LoginPage extends BasePage {
     async verifyInvalidCredentialsError() {
         await expect(this.invalidCredentialsErrorMessage).toBeVisible();
     }
+
+    async getEmailValidationMessage(): Promise<string> {
+        return await this.emailInput.evaluate((el: HTMLInputElement) => el.validationMessage);
+    }
 }
