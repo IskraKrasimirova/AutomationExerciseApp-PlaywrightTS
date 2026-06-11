@@ -57,4 +57,29 @@ export class UserFactory {
             mobileNumber: faker.phone.number()
         };
     }
+
+    static convertUiUserToApiUser(uiModel: UserModel): ApiUserModel {
+        // Convert month name → month number ("January" → "01")
+        const monthNumber = new Date(`${uiModel.monthOfBirth} 1, 2000`).getMonth() + 1;
+
+        return {
+            name: uiModel.name,
+            email: uiModel.email,
+            password: uiModel.password,
+            title: uiModel.title, 
+            dayOfBirth: uiModel.dayOfBirth,
+            monthOfBirth: monthNumber.toString(),
+            yearOfBirth: uiModel.yearOfBirth,
+            firstName: uiModel.firstName,
+            lastName: uiModel.lastName,
+            company: uiModel.company,
+            address: uiModel.address,
+            address2: uiModel.address2,
+            country: uiModel.country,
+            state: uiModel.state,
+            city: uiModel.city,
+            zipcode: uiModel.zipcode,
+            mobileNumber: uiModel.mobileNumber
+        };
+    }
 }
