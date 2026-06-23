@@ -1,0 +1,38 @@
+{
+  name: 'Jasmine Murray',
+  email: 'Wade38@hotmail.com',
+  password: '',
+  title: 'Mrs',
+  dayOfBirth: undefined,
+  monthOfBirth: '4',
+  yearOfBirth: '1973',
+  firstName: 'Gordon',
+  lastName: 'Mayert',
+  company: 'Weissnat, Legros and Jacobs',
+  address: '15336 Kelli Plaza',
+  address2: 'Suite 777',
+  country: 'Canada',
+  state: 'Nebraska',
+  city: 'North Kimberly',
+  zipcode: '67113',
+  mobileNumber: undefined
+}
+{
+  name: 'Jasmine Murray',
+  email: 'Wade38@hotmail.com',
+  password: '6ipHQyDYvhXOwsk',
+  title: 'Mrs.',
+  dayOfBirth: '30',
+  monthOfBirth: '4',
+  yearOfBirth: '1973',
+  firstName: 'Gordon',
+  lastName: 'Mayert',
+  company: 'Weissnat, Legros and Jacobs',
+  address: '15336 Kelli Plaza',
+  address2: 'Suite 777',
+  country: 'Canada',
+  state: 'Nebraska',
+  city: 'North Kimberly',
+  zipcode: '67113',
+  mobileNumber: '222.800.4564 x3394'
+}

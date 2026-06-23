@@ -1,0 +1,38 @@
+{
+  name: 'Chad Pfeffer',
+  email: 'Aliza6@gmail.com',
+  password: '',
+  title: 'Mrs',
+  dayOfBirth: undefined,
+  monthOfBirth: '9',
+  yearOfBirth: '1987',
+  firstName: 'Rosario',
+  lastName: 'Botsford',
+  company: 'Cruickshank and Sons',
+  address: '302 Crist Bypass',
+  address2: 'Suite 029',
+  country: 'New Zealand',
+  state: 'Nevada',
+  city: 'North Aylaside',
+  zipcode: '60517-0623',
+  mobileNumber: undefined
+}
+{
+  name: 'Chad Pfeffer',
+  email: 'Aliza6@gmail.com',
+  password: 'wNIfvXj53l4lF71',
+  title: 'Mrs.',
+  dayOfBirth: '8',
+  monthOfBirth: '9',
+  yearOfBirth: '1987',
+  firstName: 'Rosario',
+  lastName: 'Botsford',
+  company: 'Cruickshank and Sons',
+  address: '302 Crist Bypass',
+  address2: 'Suite 029',
+  country: 'New Zealand',
+  state: 'Nevada',
+  city: 'North Aylaside',
+  zipcode: '60517-0623',
+  mobileNumber: '1-576-224-7564 x158'
+}

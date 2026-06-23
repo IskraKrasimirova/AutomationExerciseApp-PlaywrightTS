@@ -1,0 +1,38 @@
+{
+  name: 'Joey Boehm',
+  email: 'Ona91@gmail.com',
+  password: '',
+  title: 'Mr',
+  dayOfBirth: undefined,
+  monthOfBirth: '10',
+  yearOfBirth: '1980',
+  firstName: 'Jackeline',
+  lastName: 'Breitenberg',
+  company: 'Ernser Group',
+  address: '69980 Franecki Extension',
+  address2: 'Apt. 155',
+  country: 'New Zealand',
+  state: 'Idaho',
+  city: 'New Trace',
+  zipcode: '65058-3163',
+  mobileNumber: undefined
+}
+{
+  name: 'Joey Boehm',
+  email: 'Ona91@gmail.com',
+  password: 't_zjId2PFK29Bsr',
+  title: 'Mr.',
+  dayOfBirth: '5',
+  monthOfBirth: '10',
+  yearOfBirth: '1980',
+  firstName: 'Jackeline',
+  lastName: 'Breitenberg',
+  company: 'Ernser Group',
+  address: '69980 Franecki Extension',
+  address2: 'Apt. 155',
+  country: 'New Zealand',
+  state: 'Idaho',
+  city: 'New Trace',
+  zipcode: '65058-3163',
+  mobileNumber: '861.410.8381 x882'
+}
