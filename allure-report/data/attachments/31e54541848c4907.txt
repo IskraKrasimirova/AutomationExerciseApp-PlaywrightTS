@@ -1,0 +1,6 @@
+[@faker-js/faker]: faker.name.findName() is deprecated since v7.4 and will be removed in v8.0. Please use faker.name.fullName() instead.
+[@faker-js/faker]: faker.company.companyName() is deprecated since v7.4 and will be removed in v8.0. Please use faker.company.name() instead.
+[@faker-js/faker]: faker.phone.phoneNumber() is deprecated since v7.3 and will be removed in v8.0. Please use faker.phone.number() instead.
+[@faker-js/faker]: faker.name.findName() is deprecated since v7.4 and will be removed in v8.0. Please use faker.name.fullName() instead.
+[@faker-js/faker]: faker.company.companyName() is deprecated since v7.4 and will be removed in v8.0. Please use faker.company.name() instead.
+[@faker-js/faker]: faker.phone.phoneNumber() is deprecated since v7.3 and will be removed in v8.0. Please use faker.phone.number() instead.
