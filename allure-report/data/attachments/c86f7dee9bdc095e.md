@@ -1,0 +1,24 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui/registerTests.spec.ts >> Register tests @ui @register >> Newly registered user can login successfully @e2e
+- Location: tests/ui/registerTests.spec.ts:36:9
+
+# Error details
+
+```
+Error: browserType.launch: Executable doesn't exist at /ms-playwright/firefox-1511/firefox/firefox
+╔════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just updated to 1.59.1.      ║
+║ Please update docker image as well.                    ║
+║ -  current: mcr.microsoft.com/playwright:v1.46.1-jammy ║
+║ - required: mcr.microsoft.com/playwright:v1.59.1-jammy ║
+║                                                        ║
+║ <3 Playwright Team                                     ║
+╚════════════════════════════════════════════════════════╝
+```
