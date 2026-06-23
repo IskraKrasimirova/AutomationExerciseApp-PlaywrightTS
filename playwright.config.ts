@@ -50,6 +50,11 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    // Healthcheck test 
+    {
+      name: 'healthcheck',
+      testMatch: /tests\/health\/.*\.spec\.ts/,
+    },
     // API tests
     {
       name: 'api',
