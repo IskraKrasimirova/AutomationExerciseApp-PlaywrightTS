@@ -1,0 +1,12 @@
+Error: locator.click: Test ended.
+Browser logs:
+
+<launching> /ms-playwright/webkit-2272/pw_run.sh --inspector-pipe --headless --no-startup-window
+<launched> pid=10920
+[pid=10920][err] 
+[pid=10920][err] ** (MiniBrowser:10934): CRITICAL **: 20:44:01.801: WebKitWebView is-controlled-by-automation set but automation is not allowed in the context, falling back to default session.
+[pid=10920][err] 
+[pid=10920][err] ** (MiniBrowser:10934): CRITICAL **: 20:44:07.784: WebKitWebView is-controlled-by-automation set but automation is not allowed in the context, falling back to default session.
+[pid=10920] <gracefully close start>
+Call log:
+[2m  - waiting for getByRole('link', { name: 'Delete Account' })[22m

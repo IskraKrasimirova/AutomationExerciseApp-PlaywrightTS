@@ -1,0 +1,64 @@
+Error: locator.click: Test ended.
+Browser logs:
+
+<launching> /ms-playwright/firefox-1511/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-Ws8VNr -juggler-pipe -silent
+<launched> pid=6222
+[pid=6222][err] [6222] Sandbox: CanCreateUserNamespace() clone() failure: EPERM
+[pid=6222][err] *** You are running in headless mode.
+[pid=6222][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 116: unreachable code after return statement
+[pid=6222][out] console.warn: services.settings: Ignoring preference override of remote settings server
+[pid=6222][out] console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[pid=6222][out] 
+[pid=6222][out] Juggler listening to the pipe
+[pid=6222][out] console.error: services.settings: 
+[pid=6222][out]   Message: EmptyDatabaseError: "main/nimbus-desktop-experiments" has not been synced yet
+[pid=6222][out]   Stack:
+[pid=6222][out]     EmptyDatabaseError@resource://services-settings/Database.sys.mjs:19:5
+[pid=6222][out] list@resource://services-settings/Database.sys.mjs:96:13
+[pid=6222][out] 
+[pid=6222][out] console.warn: services.settings: #fetchAttachment: Forcing fallbackToDump to false due to Utils.LOAD_DUMPS being false
+[pid=6222][out] console.error: (new NotFoundError("Could not find fa0fc42c-d91d-fca7-34eb-806ff46062dc in cache or dump", "resource://services-settings/Attachments.sys.mjs", 48))
+[pid=6222][out] console.warn: "Unable to find the attachment for" "fa0fc42c-d91d-fca7-34eb-806ff46062dc"
+[pid=6222][out] console.warn: BackupService: "There was an error while trying to get the Document's directory" [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIProperties.get]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource:///modules/backup/BackupService.sys.mjs :: get docsDirFolderPath :: line 1245"  data: no]
+[pid=6222][err] JavaScript warning: https://automationexercise.com/static/js/jquery.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+[pid=6222][out] 
+[pid=6222][out]         ERROR: error in channel "content::9/10/3": exception while running method "disposeObject" in namespace "page": Failed to find execution context with id = id-5 findExecutionContext@chrome://juggler/content/content/Runtime.js:288:13
+[pid=6222][out] disposeObject@chrome://juggler/content/content/Runtime.js:119:35
+[pid=6222][out] _onMessageInternal@chrome://juggler/content/SimpleChannel.js:237:37
+[pid=6222][out] _onMessage@chrome://juggler/content/SimpleChannel.js:194:12
+[pid=6222][out] bindToActor/actor.receiveMessage@chrome://juggler/content/SimpleChannel.js:39:44
+[pid=6222][out]  _onMessageInternal@chrome://juggler/content/SimpleChannel.js:208:24
+[pid=6222][out] _onMessage@chrome://juggler/content/SimpleChannel.js:194:12
+[pid=6222][out] bindToActor/actor.receiveMessage@chrome://juggler/content/SimpleChannel.js:39:44
+[pid=6222][out] 
+[pid=6222][err] JavaScript warning: https://automationexercise.com/static/js/jquery.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+[pid=6222][out]       
+[pid=6222][out]         ERROR: error in channel "content::9/10/4": exception while running method "disposeObject" in namespace "page": Failed to find execution context with id = id-18 findExecutionContext@chrome://juggler/content/content/Runtime.js:288:13
+[pid=6222][out] disposeObject@chrome://juggler/content/content/Runtime.js:119:35
+[pid=6222][out] _onMessageInternal@chrome://juggler/content/SimpleChannel.js:237:37
+[pid=6222][out] _onMessage@chrome://juggler/content/SimpleChannel.js:194:12
+[pid=6222][out] bindToActor/actor.receiveMessage@chrome://juggler/content/SimpleChannel.js:39:44
+[pid=6222][out]  _onMessageInternal@chrome://juggler/content/SimpleChannel.js:208:24
+[pid=6222][out] _onMessage@chrome://juggler/content/SimpleChannel.js:194:12
+[pid=6222][out] bindToActor/actor.receiveMessage@chrome://juggler/content/SimpleChannel.js:39:44
+[pid=6222][out] 
+[pid=6222][err] JavaScript warning: https://automationexercise.com/static/js/jquery.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+[pid=6222][err] JavaScript error: chrome://juggler/content/Helper.js, line 82: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebProgress.removeProgressListener]
+[pid=6222][err] JavaScript warning: https://automationexercise.com/static/js/jquery.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+[pid=6222][out]       console.warn: BackupService: "There was an error while trying to get the Document's directory" [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIProperties.get]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource:///modules/backup/BackupService.sys.mjs :: get docsDirFolderPath :: line 1245"  data: no]
+[pid=6222][err] JavaScript error: resource:///modules/backup/BackupService.sys.mjs, line 3812: NotAllowedError: PathUtils.join: PathUtils does not support empty paths
+[pid=6222] <gracefully close start>
+[pid=6222][out] 
+[pid=6222][out]         ERROR: Failed "callFunction": connector for namespace "page" in channel "undefined" is disposed. _rejectCallbacksFromConnector@chrome://juggler/content/SimpleChannel.js:108:25
+[pid=6222][out] dispose@chrome://juggler/content/SimpleChannel.js:119:27
+[pid=6222][out] dispose@chrome://juggler/content/protocol/PageHandler.js:152:23
+[pid=6222][out] _dispose@chrome://juggler/content/protocol/Dispatcher.js:117:21
+[pid=6222][out] destroySession@chrome://juggler/content/protocol/Dispatcher.js:35:13
+[pid=6222][out] dispose@chrome://juggler/content/protocol/BrowserHandler.js:77:24
+[pid=6222][out] _dispose@chrome://juggler/content/protocol/Dispatcher.js:117:21
+[pid=6222][out] _dispose@chrome://juggler/content/protocol/Dispatcher.js:41:23
+[pid=6222][out] observe/browserHandler<@chrome://juggler/content/components/Juggler.js:142:22
+[pid=6222][out] Browser.close@chrome://juggler/content/protocol/BrowserHandler.js:156:10
+[pid=6222][out] 
+Call log:
+[2m  - waiting for getByRole('link', { name: 'Delete Account' })[22m

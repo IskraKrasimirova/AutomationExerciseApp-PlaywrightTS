@@ -1,0 +1,40 @@
+Error: locator.click: Test ended.
+Browser logs:
+
+<launching> /ms-playwright/firefox-1511/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-mH9Ihb -juggler-pipe -silent
+<launched> pid=7949
+[pid=7949][err] [7949] Sandbox: CanCreateUserNamespace() clone() failure: EPERM
+[pid=7949][err] *** You are running in headless mode.
+[pid=7949][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 116: unreachable code after return statement
+[pid=7949][out] console.warn: services.settings: Ignoring preference override of remote settings server
+[pid=7949][out] console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[pid=7949][out] 
+[pid=7949][out] Juggler listening to the pipe
+[pid=7949][out] console.error: services.settings: 
+[pid=7949][out]   Message: EmptyDatabaseError: "main/nimbus-desktop-experiments" has not been synced yet
+[pid=7949][out]   Stack:
+[pid=7949][out]     EmptyDatabaseError@resource://services-settings/Database.sys.mjs:19:5
+[pid=7949][out] list@resource://services-settings/Database.sys.mjs:96:13
+[pid=7949][out] 
+[pid=7949][out] console.warn: services.settings: #fetchAttachment: Forcing fallbackToDump to false due to Utils.LOAD_DUMPS being false
+[pid=7949][out] console.error: (new NotFoundError("Could not find fa0fc42c-d91d-fca7-34eb-806ff46062dc in cache or dump", "resource://services-settings/Attachments.sys.mjs", 48))
+[pid=7949][out] console.warn: "Unable to find the attachment for" "fa0fc42c-d91d-fca7-34eb-806ff46062dc"
+[pid=7949][out] console.warn: BackupService: "There was an error while trying to get the Document's directory" [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIProperties.get]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource:///modules/backup/BackupService.sys.mjs :: get docsDirFolderPath :: line 1245"  data: no]
+[pid=7949][err] JavaScript warning: https://automationexercise.com/static/js/jquery.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+[pid=7949][out] console.warn: BackupService: "There was an error while trying to get the Document's directory" [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIProperties.get]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource:///modules/backup/BackupService.sys.mjs :: get docsDirFolderPath :: line 1245"  data: no]
+[pid=7949][err] JavaScript error: resource:///modules/backup/BackupService.sys.mjs, line 3812: NotAllowedError: PathUtils.join: PathUtils does not support empty paths
+[pid=7949] <gracefully close start>
+[pid=7949][out] 
+[pid=7949][out]         ERROR: Failed "callFunction": connector for namespace "page" in channel "undefined" is disposed. _rejectCallbacksFromConnector@chrome://juggler/content/SimpleChannel.js:108:25
+[pid=7949][out] dispose@chrome://juggler/content/SimpleChannel.js:119:27
+[pid=7949][out] dispose@chrome://juggler/content/protocol/PageHandler.js:152:23
+[pid=7949][out] _dispose@chrome://juggler/content/protocol/Dispatcher.js:117:21
+[pid=7949][out] destroySession@chrome://juggler/content/protocol/Dispatcher.js:35:13
+[pid=7949][out] dispose@chrome://juggler/content/protocol/BrowserHandler.js:77:24
+[pid=7949][out] _dispose@chrome://juggler/content/protocol/Dispatcher.js:117:21
+[pid=7949][out] _dispose@chrome://juggler/content/protocol/Dispatcher.js:41:23
+[pid=7949][out] observe/browserHandler<@chrome://juggler/content/components/Juggler.js:142:22
+[pid=7949][out] Browser.close@chrome://juggler/content/protocol/BrowserHandler.js:156:10
+[pid=7949][out] 
+Call log:
+[2m  - waiting for getByRole('link', { name: 'Delete Account' })[22m
