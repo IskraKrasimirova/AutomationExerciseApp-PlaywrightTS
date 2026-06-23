@@ -5,6 +5,8 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+  schedule:
+  - cron: "0 5 * * Mon"
   workflow_dispatch:
 
 permissions:
@@ -14,14 +16,12 @@ permissions:
 
 jobs:
   test:
-    timeout-minutes: 60
+    timeout-minutes: 30
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.0-jammy
 
     steps:
-      - uses: actions/checkout@v4
-
       # ⭐ Download previous Allure history from gh-pages
       - name: Download previous Allure history
         if: always()
@@ -35,24 +35,8 @@ jobs:
             echo "No previous history found in gh-pages"
           fi
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-
-      - name: Cache Playwright Browsers
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-
-
       - name: Install dependencies
         run: npm ci
-
-      - name: Install Playwright Browsers
-        timeout-minutes: 30
-        run: npx playwright install --with-deps
 
       - name: Run Playwright tests
         run: npx playwright test
@@ -90,6 +74,11 @@ jobs:
           echo "Playwright=$(npx playwright --version)" >> allure-results/environment.properties
           echo "Repository=${{ github.repository }}" >> allure-results/environment.properties
           echo "Run ID=${{ github.run_id }}" >> allure-results/environment.properties
+
+      - name: Install Java
+        run: |
+         apt-get update
+         apt-get install -y default-jre
 
       - name: Generate Allure Report
         if: always()
