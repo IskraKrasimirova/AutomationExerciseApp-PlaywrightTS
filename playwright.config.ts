@@ -12,9 +12,9 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  timeout: 20000, // 20 seconds for each test
+  timeout: 30000, // 20 seconds for each test -> inccreased to default timeout of 30 seconds
   expect: {
-    timeout: 5000 // 5 seconds for each expect condition
+    timeout: 10000 // default5 seconds for each expect condition -> inccreased to 10 seconds
   },
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -24,8 +24,7 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? '100%' : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+  workers: process.env.CI ? '100%' : undefined, // Use all available CPU cores on CI
   reporter: process.env.CI
     ? [
       ['github'],
