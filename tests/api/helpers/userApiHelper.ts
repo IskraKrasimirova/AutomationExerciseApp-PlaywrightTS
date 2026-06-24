@@ -33,7 +33,14 @@ export class UserApiHelper {
             }
         });
 
-        const data = await response.json();
+        // JSON parse guard
+        let data;
+        try {
+            data = await response.json();
+        } catch {
+            const raw = await response.text();
+            throw new Error(`API returned non-JSON response: ${raw}`);
+        }
 
         if (data.responseCode !== 201) {
             throw new Error(`Failed to create user. ResponseCode: ${data.responseCode}, Message: ${data.message}`);
@@ -48,7 +55,14 @@ export class UserApiHelper {
             form: { email, password }
         });
 
-        const data = await response.json();
+        // JSON parse guard
+        let data;
+        try {
+            data = await response.json();
+        } catch {
+            const raw = await response.text();
+            throw new Error(`API returned non-JSON response: ${raw}`);
+        }
 
         if (data.responseCode !== 200) {
             console.warn(

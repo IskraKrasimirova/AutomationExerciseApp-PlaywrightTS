@@ -1,5 +1,9 @@
 name: Playwright Tests
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 on:
   push:
     branches: [main, master]
@@ -143,9 +147,6 @@ jobs:
     if: always()
     needs: test
     runs-on: ubuntu-latest
-    concurrency:
-     group: "pages"
-     cancel-in-progress: true
     permissions:
       pages: write
       id-token: write
@@ -154,4 +155,4 @@ jobs:
 
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
