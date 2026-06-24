@@ -11,7 +11,7 @@ export class UserFactory {
         const birthDate = faker.date.birthdate({ min: 18, max: 60, mode: 'age' });
 
         return {
-            name: faker.name.findName(),
+            name: faker.person.fullName(),
             email: faker.internet.email(),
             password: faker.internet.password(),
             title: faker.helpers.arrayElement(titles),
@@ -21,15 +21,15 @@ export class UserFactory {
             country: faker.helpers.arrayElement(countries),
             subscribeToNewsletter: true,
             receiveSpecialOffers: true,
-            firstName: faker.name.firstName(),
-            lastName: faker.name.lastName(),
-            company: faker.company.companyName(),
-            address: faker.address.streetAddress(),
-            address2: faker.address.secondaryAddress(),
-            state: faker.address.state(),
-            city: faker.address.city(),
-            zipcode: faker.address.zipCode(),
-            mobileNumber: faker.phone.phoneNumber()
+            firstName: faker.person.firstName(),
+            lastName: faker.person.lastName(),
+            company: faker.company.name(),
+            address: faker.location.streetAddress(),
+            address2: faker.location.secondaryAddress(),
+            state: faker.location.state(),
+            city: faker.location.city(),
+            zipcode: faker.location.zipCode(),
+            mobileNumber: faker.phone.number()
         };
     }
 
@@ -37,7 +37,7 @@ export class UserFactory {
         const birthDate = faker.date.birthdate({ min: 18, max: 60, mode: 'age' });
 
         return {
-            name: faker.name.findName(),
+            name: faker.person.fullName(),
             email: faker.internet.email(),
             password: faker.internet.password(),
             title: faker.helpers.arrayElement(titles),
@@ -45,15 +45,15 @@ export class UserFactory {
             monthOfBirth: (birthDate.getMonth() + 1).toString().padStart(2, "0"),
             yearOfBirth: birthDate.getFullYear().toString(),
             country: faker.helpers.arrayElement(countries),
-            firstName: faker.name.firstName(),
-            lastName: faker.name.lastName(),
-            company: faker.company.companyName(),
-            address: faker.address.streetAddress(),
-            address2: faker.address.secondaryAddress(),
-            state: faker.address.state(),
-            city: faker.address.city(),
-            zipcode: faker.address.zipCode(),
-            mobileNumber: faker.phone.phoneNumber()
+            firstName: faker.person.firstName(),
+            lastName: faker.person.lastName(),
+            company: faker.company.name(),
+            address: faker.location.streetAddress(),
+            address2: faker.location.secondaryAddress(),
+            state: faker.location.state(),
+            city: faker.location.city(),
+            zipcode: faker.location.zipCode(),
+            mobileNumber: faker.phone.number()
         };
     }
 
