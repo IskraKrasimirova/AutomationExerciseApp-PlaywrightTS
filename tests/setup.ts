@@ -75,4 +75,8 @@ export const test = base.extend<{
     }
 });
 
+test.beforeEach(async ({ page }) => {
+    await page.context().clearCookies();
+});
+
 export const expect = test.expect;
