@@ -1,0 +1,30 @@
+Error: locator.click: Test ended.
+Browser logs:
+
+<launching> /ms-playwright/firefox-1511/firefox/firefox -no-remote -headless -profile /tmp/playwright_firefoxdev_profile-2DgHON -juggler-pipe -silent
+<launched> pid=15928
+[pid=15928][err] [15928] Sandbox: CanCreateUserNamespace() clone() failure: EPERM
+[pid=15928][err] *** You are running in headless mode.
+[pid=15928][err] JavaScript warning: resource://services-settings/Utils.sys.mjs, line 116: unreachable code after return statement
+[pid=15928][out] console.warn: services.settings: Ignoring preference override of remote settings server
+[pid=15928][out] console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+[pid=15928][out] 
+[pid=15928][out] Juggler listening to the pipe
+[pid=15928][out] console.warn: services.settings: #fetchAttachment: Forcing fallbackToDump to false due to Utils.LOAD_DUMPS being false
+[pid=15928][out] console.error: (new NotFoundError("Could not find fa0fc42c-d91d-fca7-34eb-806ff46062dc in cache or dump", "resource://services-settings/Attachments.sys.mjs", 48))
+[pid=15928][out] console.warn: "Unable to find the attachment for" "fa0fc42c-d91d-fca7-34eb-806ff46062dc"
+[pid=15928][out] console.error: services.settings: 
+[pid=15928][out]   Message: EmptyDatabaseError: "main/nimbus-desktop-experiments" has not been synced yet
+[pid=15928][out]   Stack:
+[pid=15928][out]     EmptyDatabaseError@resource://services-settings/Database.sys.mjs:19:5
+[pid=15928][out] list@resource://services-settings/Database.sys.mjs:96:13
+[pid=15928][out] 
+[pid=15928][out] console.error: [Exception... "Favicon at "https://automationexercise.com/favicon.ico" failed to load."  nsresult: "0x80004004 (NS_ERROR_ABORT)"  location: "JS frame :: resource:///modules/FaviconLoader.sys.mjs :: onStopRequest :: line 274"  data: no]
+[pid=15928][out] console.warn: BackupService: "There was an error while trying to get the Document's directory" [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIProperties.get]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource:///modules/backup/BackupService.sys.mjs :: get docsDirFolderPath :: line 1245"  data: no]
+[pid=15928][out] console.warn: BackupService: "There was an error while trying to get the Document's directory" [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIProperties.get]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource:///modules/backup/BackupService.sys.mjs :: get docsDirFolderPath :: line 1245"  data: no]
+[pid=15928][err] JavaScript error: resource:///modules/backup/BackupService.sys.mjs, line 3812: NotAllowedError: PathUtils.join: PathUtils does not support empty paths
+[pid=15928][out] console.error: "Could not download new icon" (new ServerInfoError("Server response is invalid SyntaxError: XMLHttpRequest.open: '/' is not a valid URL.", "resource://services-settings/Attachments.sys.mjs", 40))
+[pid=15928][err] JavaScript warning: resource://gre/modules/UpdateService.sys.mjs, line 4026: unreachable code after return statement
+[pid=15928] <gracefully close start>
+Call log:
+[2m  - waiting for getByRole('link', { name: 'Delete Account' })[22m
