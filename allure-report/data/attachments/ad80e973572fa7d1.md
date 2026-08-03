@@ -1,0 +1,82 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui/userFlows.spec.ts >> @ui @api @e2e User Registration Flow (UI → API) >> User registered via UI exists in API @smoke
+- Location: tests/ui/userFlows.spec.ts:170:9
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```
+
+```
+Error: locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for getByRole('link', { name: 'Signup / Login' })
+
+```
+
+# Test source
+
+```ts
+  1  | import { expect, Locator, Page } from '@playwright/test';
+  2  | 
+  3  | export class NavBar {
+  4  |     private homeLink: Locator;
+  5  |     private productsLink: Locator;
+  6  |     private cartLink: Locator;
+  7  |     private loginLink: Locator;
+  8  |     private testCasesLink: Locator;
+  9  |     private apiTestingLink: Locator;
+  10 |     private contactUsLink: Locator;
+  11 |     private logoutLink: Locator;
+  12 |     private deleteAccountLink: Locator;
+  13 |     private loggedInAs: Locator;
+  14 | 
+  15 |     constructor(private page: Page) {
+  16 |         this.homeLink = this.page.getByRole('link', { name: 'Home' });
+  17 |         this.productsLink = this.page.getByRole('link', { name: 'Products' });
+  18 |         this.cartLink = page.getByRole('link', { name: 'Cart' });
+  19 |         this.loginLink = page.getByRole('link', { name: 'Signup / Login' });
+  20 |         this.testCasesLink = page.getByRole('link', { name: 'Test Cases' });
+  21 |         this.apiTestingLink = page.getByRole('link', { name: 'API Testing' });
+  22 |         this.contactUsLink = page.getByRole('link', { name: 'Contact us' });
+  23 |         this.logoutLink = page.getByRole('link', { name: 'Logout' });
+  24 |         this.deleteAccountLink = page.getByRole('link', { name: 'Delete Account' });
+  25 |         this.loggedInAs = page.getByText('Logged in as');
+  26 |     }
+  27 | 
+  28 |     async goToLoginPage() {
+> 29 |         await this.loginLink.click();
+     |                              ^ Error: locator.click: Target page, context or browser has been closed
+  30 |     }
+  31 | 
+  32 |     async deleteAccount() {
+  33 |         await this.deleteAccountLink.click();
+  34 |     }
+  35 | 
+  36 |     async goToProductsPage() {
+  37 |         await this.productsLink.click();
+  38 |     }
+  39 | 
+  40 |     async isUserLoggedIn(): Promise<boolean> {
+  41 |         return this.logoutLink.isVisible();
+  42 |     }
+  43 | 
+  44 |     async logout() {
+  45 |         await this.logoutLink.click();
+  46 |     }
+  47 | 
+  48 |     async verifyUserIsLoggedIn(name: string) {
+  49 |         await expect(this.logoutLink).toBeVisible();
+  50 |         await expect(this.deleteAccountLink).toBeVisible();
+  51 |         await expect(this.loggedInAs).toContainText(name);
+  52 |     }
+  53 | }
+```

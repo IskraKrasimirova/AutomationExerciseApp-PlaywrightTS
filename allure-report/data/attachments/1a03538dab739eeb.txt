@@ -1,0 +1,5 @@
+Error: locator.click: Test ended.
+Call log:
+[2m  - waiting for getByRole('link', { name: 'Delete Account' })[22m
+[2m    2 × waiting for" https://automationexercise.com/" navigation to finish...[22m
+[2m      - navigated to "https://automationexercise.com/"[22m
