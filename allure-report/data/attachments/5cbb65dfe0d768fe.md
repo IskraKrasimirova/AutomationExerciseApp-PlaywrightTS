@@ -1,0 +1,281 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: api/createAccountApiTests.spec.ts >> @api @createAccount Create Account API - /createAccount >> @regression Empty value for 'address2' returns 201
+- Location: tests/api/createAccountApiTests.spec.ts:82:13
+
+# Error details
+
+```
+SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+```
+
+```
+Error: API returned non-JSON response: <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <script>
+      (function(){
+          setTimeout(function(){
+              window.location.reload();
+          }, 5000);
+      }())
+  </script>
+  <link rel="icon" href="data:,">
+  <title>One moment, please...</title>
+  <style>
+.spinner {
+    -webkit-animation: spin 1s ease-out;
+    animation: spin 1s ease-out;
+}
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+#outer-container {
+    text-align: center;
+}
+#container {
+        display: inline-block;
+        height: 100px;
+    }
+#text {
+    float: left;
+    height: 100px;
+    line-height: 100px;
+    font-size: 3rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0 .4em 0 .2em;
+    letter-spacing: 0.06em;
+    color: rgba(38, 122, 72, 0.86);
+}
+@media (min-height: 180px) {
+    #outer-container {
+        margin-top: 0;
+    }
+}
+@media (min-height: 360px) {
+    #outer-container {
+        margin-top: 5%;
+    }
+}
+@media (min-height: 540px) {
+    #outer-container {
+        margin-top: 10%;
+    }
+}
+@media (min-height: 720px) {
+    #outer-container {
+        margin-top: 20%;
+    }
+}
+@media (min-width: 1450px) {
+    .throbber {
+        width: 90px;
+        height: 90px;
+        float: left;
+        padding: 5px 0 5px 5px;
+        opacity: 0.86;
+    }
+    #container {
+        display: inline-block;
+        border: 3px solid rgb(38, 122, 72, 0.86);
+        border-radius: 51px;
+        height: 100px;
+    }
+}
+
+  </style>
+</head>
+<body>
+  <div id="outer-container">
+    <div id="container">
+
+      <div id="text">
+        Please wait while your request is being verified...
+      </div>
+    </div>
+  </div>
+  <div id="ye06wfvxn2bi"></div>
+  <script>
+var a0Y=a0U;function a0a(){var Q=['plugins','entries','navigator','test','GET','ById','type','submit','344662PSbtOv','2822344ltnVWf','languages','onreadysta','419578QPHGky','mimeTypes','1913868ZGXXUf','userAgent','document','3ncDfxN','value','(((.+)+)+)','__proto__','language','cttl','name','createElem','search','prototype','toString','form','append','appVersion','a6105c0a61','DOMContent','d49030b349','forEach','action','ent','0950635027','input','style','stener','webdriver','2588576kGIYRY','ne;','addEventLi','attachEven','display:no','appendChil','constructo','7fa3b767c4','16692016wdgMuF','Loaded','length','1b41b08f12','hidden','2461225wXYuHz','map'];a0a=function(){return Q;};return a0a();}function a0U(T,n){var a=a0a();return a0U=function(U,b){U=U-0x144;var s=a[U];return s;},a0U(T,n);}(function(T,n){var a0c={T:0x164,n:0x169,a:0x166,U:0x161,b:0x151},t=a0U,a=T();while(!![]){try{var U=parseInt(t(0x160))/0x1+-parseInt(t(a0c.T))/0x2*(parseInt(t(a0c.n))/0x3)+-parseInt(t(0x149))/0x4+-parseInt(t(0x156))/0x5+-parseInt(t(a0c.a))/0x6+-parseInt(t(a0c.U))/0x7+parseInt(t(a0c.b))/0x8;if(U===n)break;else a['push'](a['shift']());}catch(b){a['push'](a['shift']());}}}(a0a,0x57d88));var a0b=window[a0Y(0x15a)],a0s={'webdriverCheck':function(){var a0Z={T:0x148},i=a0Y;return i(0x148)in window||!!a0b[i(a0Z.T)];},'userAgentCheck':function(){var B=a0Y;return/headless|bytespider/i[B(0x15b)](a0b[B(0x167)]);},'appVersionCheck':function(){var a0v={T:0x15b,n:0x176},h=a0Y;return/headless/i[h(a0v.T)](a0b[h(a0v.n)]);},'pluginArraySpoofing':function(){var a0S={T:0x172,n:0x16c,a:0x153},g=a0Y;let T=PluginArray[g(a0S.T)]===a0b[g(0x158)][g(a0S.n)];if(a0b[g(0x158)][g(a0S.a)]>0x0)T&=Plugin[g(a0S.T)]===a0b[g(0x158)][0x0][g(0x16c)];return!T;},'mimeTypeArraySpoofing':function(){var a0J={T:0x16c,n:0x153},o=a0Y;let T=MimeTypeArray[o(0x172)]===a0b[o(0x165)][o(a0J.T)];if(a0b[o(0x165)][o(a0J.n)]>0x0)T&=MimeType['prototype']===a0b[o(0x165)][0x0]['__proto__'];return!T;},'noLanguage':function(){var a0E={T:0x162,n:0x153},F=a0Y;return!a0b[F(0x16d)]||a0b[F(a0E.T)][F(a0E.n)]===0x0;},'zeroOuterDimensions':function(){return window['outerHeigh'+'t']===0x0&&window['outerWidth']===0x0;}},a0p=function(a,U){var a0m={T:0x14b,n:0x168,a:0x14c,U:0x163},a0K={T:0x16b,n:0x173,a:0x14f},d=a0Y,b=(function(){var p=!![];return function(r,V){var R=p?function(){if(V){var C=V['apply'](r,arguments);return V=null,C;}}:function(){};return p=![],R;};}()),s=b(this,function(){var u=a0U;return s[u(0x173)]()[u(0x171)](u(a0K.T)+'+$')[u(a0K.n)]()[u(a0K.a)+'r'](s)[u(0x171)](u(a0K.T)+'+$');});s(),window[d(a0m.T)+'stener']?window[d(a0m.n)]['addEventLi'+d(0x147)](d(0x178)+d(0x152),a,U):window[d(0x168)][d(a0m.a)+'t'](d(a0m.U)+'techange',a);};a0p(function(){var a0k={T:0x170,n:0x168,a:0x17c,U:0x145,b:0x170,s:0x170,p:0x145,r:0x145,V:0x159,R:0x175,C:0x154,L:0x175,G:0x17a,e:0x173,q:0x14d,A:0x17b,N:0x16f,l:0x155,f:0x16a,x:0x15e,y:0x15e,Y:0x14e,c:0x15f};setTimeout(function(){var z=a0U,T=window[z(0x168)]['getElement'+z(0x15d)]('ye06wfvxn2bi'),n=+((+!+[]+!![]+!![]+!![]+!![]+!![])+(+!+[]+!![]+!![]+!![]+!![]+[])+(+!+[]+!![]+!![]+!![]+!![]+!![])+(+!+[]+!![]+!![]+!![]+!![]+!![]+[])+(+!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(+!+[]+!![]+!![]+!![]+!![]+[])+(+!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![])),a=window[z(0x168)][z(a0k.T)+z(0x17c)](z(0x174)),U=window[z(a0k.n)]['createElem'+z(0x17c)](z(0x145)),b=window['document'][z(0x170)+z(a0k.a)](z(a0k.U)),s=window['document'][z(a0k.b)+'ent']('input'),p=window['document'][z(a0k.s)+'ent'](z(a0k.p)),r=window[z(0x168)][z(0x170)+'ent'](z(a0k.r)),V=+((+!+[]+!![]+!![])+(+!+[]+!![]+!![]+!![]+!![]+!![]+[])+(+!+[])+(+!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+!+[])+(+!+[]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+!+[]+!![])),R='wsidchk',C='pdata',L='https%3A%2F%2Fautomationexercise.com%2Fapi%2FdeleteAccount',G='/z0f76a1d14fd21a8fb5fd0d03e0fdc3d3cedae52f',e='failedChecks',q=Object[z(a0k.V)](a0s)[z(0x157)](([f,x])=>{try{return x()?f:null;}catch(y){return null;}})['filter'](f=>f!==null),A=q['length']>0x0;if(A){var N=new URLSearchParams();N[z(a0k.R)]('id',z(0x177)+z(a0k.C)+z(0x144)+'9e'),N[z(0x175)]('ts','1789380811'),N['append'](R,n+V),N[z(a0k.L)](C,L),N[z(a0k.R)](z(0x16e),'0'),q[z(a0k.G)](f=>N[z(0x175)](e,f));var l=new XMLHttpRequest();l['open'](z(0x15c),G+'?'+N[z(a0k.e)]()),l['send'](null);}else a['id']='ye06wfvxn2bi',a[z(0x146)]=z(a0k.q)+z(0x14a),a['method']=z(0x15c),a[z(a0k.A)]=G,U['id']='akjw30ebnafs',U[z(a0k.N)]=R,U[z(0x16a)]=n+V,U[z(0x15e)]=z(a0k.l),s[z(a0k.N)]='id',s['value']=z(0x150)+'60b54a2be4'+z(0x179)+'c7',s['type']=z(a0k.l),p[z(a0k.N)]='ts',p[z(a0k.f)]='1789380811',p[z(0x15e)]=z(0x155),b['id']='g1mt3wf1k4rl',b[z(a0k.N)]=C,b['value']=L,b[z(a0k.x)]='hidden',r['name']=z(0x16e),r[z(0x16a)]='0',r[z(a0k.y)]='hidden',a[z(a0k.Y)+'d'](U),a[z(0x14e)+'d'](b),a[z(0x14e)+'d'](s),a[z(0x14e)+'d'](p),a['appendChil'+'d'](r),T[z(0x14e)+'d'](a),a[z(a0k.c)]();},0x3e8);},![]);
+  </script>
+</body>
+</html>
+
+```
+
+# Test source
+
+```ts
+  1   | import { APIRequestContext } from "@playwright/test";
+  2   | import { config } from "../../../utils/config";
+  3   | import { ApiUrls } from "../../../utils/api/apiUrls";
+  4   | import { ApiUserModel } from "../../../models/apiUserModel";
+  5   | import { UserFactory } from "../../../factories/userFactory";
+  6   | 
+  7   | export class UserApiHelper {
+  8   |     constructor(private request: APIRequestContext) { }
+  9   | 
+  10  |     async createUser(): Promise<ApiUserModel> {
+  11  |         const createAccountApiEndpoint = config.api.baseUrl + ApiUrls.createAccount;
+  12  |         const user = UserFactory.createApiUser();
+  13  | 
+  14  |         const response = await this.request.post(createAccountApiEndpoint, {
+  15  |             form: {
+  16  |                 name: user.name,
+  17  |                 email: user.email,
+  18  |                 password: user.password,
+  19  |                 title: user.title,
+  20  |                 birth_date: user.dayOfBirth,
+  21  |                 birth_month: user.monthOfBirth,
+  22  |                 birth_year: user.yearOfBirth,
+  23  |                 firstname: user.firstName,
+  24  |                 lastname: user.lastName,
+  25  |                 company: user.company,
+  26  |                 address1: user.address,
+  27  |                 address2: user.address2,
+  28  |                 country: user.country,
+  29  |                 state: user.state,
+  30  |                 city: user.city,
+  31  |                 zipcode: user.zipcode,
+  32  |                 mobile_number: user.mobileNumber
+  33  |             }
+  34  |         });
+  35  | 
+  36  |         // JSON parse guard
+  37  |         let data;
+  38  |         try {
+  39  |             data = await response.json();
+  40  |         } catch {
+  41  |             const raw = await response.text();
+  42  |             throw new Error(`API returned non-JSON response: ${raw}`);
+  43  |         }
+  44  | 
+  45  |         if (data.responseCode !== 201) {
+  46  |             throw new Error(`Failed to create user. ResponseCode: ${data.responseCode}, Message: ${data.message}`);
+  47  |         }
+  48  | 
+  49  |         return user;
+  50  |     }
+  51  | 
+  52  |     async deleteUser(email: string, password: string): Promise<void> {
+  53  |         const deleteAccountApiEndpoint = config.api.baseUrl + ApiUrls.deleteAccount;
+  54  |         const response = await this.request.delete(deleteAccountApiEndpoint, {
+  55  |             form: { email, password }
+  56  |         });
+  57  | 
+  58  |         // JSON parse guard
+  59  |         let data;
+  60  |         try {
+  61  |             data = await response.json();
+  62  |         } catch {
+  63  |             const raw = await response.text();
+> 64  |             throw new Error(`API returned non-JSON response: ${raw}`);
+      |                   ^ Error: API returned non-JSON response: <!DOCTYPE html>
+  65  |         }
+  66  | 
+  67  |         if (data.responseCode !== 200) {
+  68  |             console.warn(
+  69  |                 `[WARN] DeleteUser failed. ResponseCode: ${data.responseCode}, Message: ${data.message}`
+  70  |             );
+  71  |         }
+  72  |     }
+  73  | 
+  74  |     createAccountFormData(user: ApiUserModel): Record<string, any> {
+  75  |         return {
+  76  |             name: user.name,
+  77  |             email: user.email,
+  78  |             password: user.password,
+  79  |             title: user.title,
+  80  |             birth_date: user.dayOfBirth,
+  81  |             birth_month: user.monthOfBirth,
+  82  |             birth_year: user.yearOfBirth,
+  83  |             firstname: user.firstName,
+  84  |             lastname: user.lastName,
+  85  |             company: user.company,
+  86  |             address1: user.address,
+  87  |             address2: user.address2,
+  88  |             country: user.country,
+  89  |             state: user.state,
+  90  |             city: user.city,
+  91  |             zipcode: user.zipcode,
+  92  |             mobile_number: user.mobileNumber
+  93  |         };
+  94  |     }
+  95  | 
+  96  |     async getUserDetailByEmail(email: string): Promise<ApiUserModel> {
+  97  |         const getUserDetailApiEndpoint = config.api.baseUrl + ApiUrls.userDetailByEmail;
+  98  | 
+  99  |         const response = await this.request.get(getUserDetailApiEndpoint, {
+  100 |             params: { email }
+  101 |         });
+  102 | 
+  103 |         const data = await response.json();
+  104 | 
+  105 |         if (data.responseCode !== 200) {
+  106 |             throw new Error(
+  107 |                 `Failed to get user details. ResponseCode: ${data.responseCode}, Message: ${data.message}`
+  108 |             );
+  109 |         }
+  110 | 
+  111 |         const apiUserData = data.user;
+  112 | 
+  113 |         return {
+  114 |             name: apiUserData.name,
+  115 |             email: apiUserData.email,
+  116 |             password: "",
+  117 |             title: apiUserData.title,
+  118 |             // Birth date fields (snake_case → camelCase)
+  119 |             dayOfBirth: apiUserData.birth_date,
+  120 |             monthOfBirth: apiUserData.birth_month,
+  121 |             yearOfBirth: apiUserData.birth_year,
+  122 |             // Personal info
+  123 |             firstName: apiUserData.first_name,
+  124 |             lastName: apiUserData.last_name,
+  125 |             // Company & address
+  126 |             company: apiUserData.company,
+  127 |             address: apiUserData.address1,
+  128 |             address2: apiUserData.address2,
+  129 |             country: apiUserData.country,
+  130 |             state: apiUserData.state,
+  131 |             city: apiUserData.city,
+  132 |             zipcode: apiUserData.zipcode,
+  133 |             mobileNumber: apiUserData.mobile_number
+  134 |         };
+  135 |     }
+  136 | 
+  137 |     async tryGetUserDetail(email: string): Promise<any> {
+  138 |         const endpoint = config.api.baseUrl + ApiUrls.userDetailByEmail;
+  139 | 
+  140 |         const response = await this.request.get(endpoint, {
+  141 |             params: { email }
+  142 |         });
+  143 | 
+  144 |         return await response.json(); // returns 200 with user data if found, or 404 with error message if not found
+  145 |     }
+  146 | }
+  147 | 
+```
